@@ -22,3 +22,5 @@ No manual demo video replacement is required for the included samples. To replac
 
 
 Excluded: comic/1vid.mp4 and its poster show a recognizable third-party superhero. Those files were removed; no permission for that character was established. The hero uses the vendor's cat-yoga comic sample instead. The wide gallery card frames this original portrait sample in a 16:9 player; it is not a claim about native export dimensions.
+
+Playback repair: Watch Demo opens a native dialog and plays the local product sample. Whole poster surfaces are clickable; playing another sample pauses the previous one. Vimeo currently presents an access challenge in verification, so the local comic sample is the default demonstration and the walkthrough includes an external fallback link. The affiliate redirect was verified to resolve to the vendor bundle offer; the landing page therefore directs visitors to current pricing rather than presenting the old Premium price.

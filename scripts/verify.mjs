@@ -1,4 +1,4 @@
-import { chromium } from '@playwright/test';
+﻿import { chromium } from '@playwright/test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 const browser = await chromium.launch();
@@ -23,9 +23,21 @@ try {
   await page.locator('summary').first().click();
   assert.equal(await page.locator('details[open]').count(), 1);
   await page.getByRole('tab', { name: 'Comic sample', exact: true }).click();
-  await page.locator('#demo-panel .play-button').click();
+  await page.locator('#demo-panel .video-trigger').click();
   await page.locator('#demo-panel video').evaluate(v => new Promise((resolve, reject) => { if (v.readyState >= 1) return resolve(); v.addEventListener('loadedmetadata', resolve, {once:true}); v.addEventListener('error', () => reject(new Error('Sample playback failed')), {once:true}); setTimeout(() => reject(new Error('Sample loading timed out')), 15000); }));
   assert.equal(await page.locator('#demo-panel video').getAttribute('controls'), '');
+  await page.waitForFunction(() => document.querySelector('#demo-panel video')?.currentTime > 0.25);
+  await page.locator('.hero-actions').getByRole('button', { name: 'Watch Demo', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('dialog video')?.currentTime > 0.25);
+  await page.getByRole('button', { name: 'Close demo' }).click();
+  await page.waitForFunction(() => !document.querySelector('dialog video'));
+  for (const card of await page.locator('.gallery-card').all()) {
+    await card.getByRole('button').click();
+    await page.waitForFunction(id => document.querySelector(id)?.currentTime > 0.25, 'video[aria-label=' + JSON.stringify(await card.locator('video').getAttribute('aria-label')) + ']');
+  }
+  await page.locator('.hero-video .video-trigger').click();
+  await page.waitForFunction(() => document.querySelector('.hero-video video')?.currentTime > 0.25);
+  assert.equal(await page.locator('video').evaluateAll(videos => videos.filter(v => !v.paused).length), 1);
   await page.getByRole('tab', { name: 'App walkthrough', exact: true }).click();
   await page.getByRole('button', { name: 'Play official walkthrough' }).click();
   assert.match(await page.locator('#demo-panel iframe').getAttribute('src'), /1232486302/);
@@ -40,3 +52,5 @@ try {
   assert.deepEqual(errors, []);
   console.log('PASS: desktop/mobile layout, lazy media, actual video metadata, gallery filters, demo controls, FAQ, affiliate links, and legal routes.');
 } finally { await browser.close(); }
+
+

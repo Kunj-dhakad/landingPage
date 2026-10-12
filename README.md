@@ -1,4 +1,4 @@
-# Comic Videos AI affiliate landing page
+﻿# Comic Videos AI affiliate landing page
 
 Next.js 16.4.0 App Router, React 19.3.0, TypeScript, Tailwind CSS, Motion, and Lucide. Exact resolved dependencies are recorded in package-lock.json.
 
@@ -11,6 +11,8 @@ npm run dev
 
 Open http://localhost:3000. Production checks: `npm run typecheck` and `npm run build`. Run production locally with `npm start`.
 
+The homepage currently sends visitors straight to the vendor sales offer through the configured affiliate URL using a server-side 307 redirect. The landing page source is retained. Remove the `/` rule in `next.config.ts` to display it again. Redeploy after changing the redirect or its environment variable. The existing landing-page browser verification script applies when this redirect is disabled.
+
 ## Configure and deploy to Vercel
 
 Import this folder as a Next.js project in Vercel. Default build command: `npm run build`; no custom output directory is needed.
@@ -22,6 +24,7 @@ Import this folder as a Next.js project in Vercel. Default build command: `npm r
 
 ## Media and content
 
-See [docs/RESEARCH.md](docs/RESEARCH.md) and [docs/MEDIA.md](docs/MEDIA.md) for evidence, provenance, promotional-use scope, and replacement instructions. Video files load on user interaction with native play/pause, volume/mute, seeking, and fullscreen controls. The official Vimeo walkthrough is click-to-load. Images use Next.js Image; below-fold images are lazy-loaded.
+See [docs/RESEARCH.md](docs/RESEARCH.md) and [docs/MEDIA.md](docs/MEDIA.md) for evidence, provenance, promotional-use scope, and replacement instructions. Video files load on user interaction with native play/pause, volume/mute, seeking, and fullscreen controls. Watch Demo plays a local sample in a dismissible dialog. All four gallery samples are hosted locally. The official Vimeo walkthrough is click-to-load with a direct link if Vimeo requires access verification. Images use Next.js Image; below-fold images are lazy-loaded.
 
 No user data collection, analytics, fabricated testimonials, fake product UI, or signup backend is included. Privacy and affiliate disclaimer routes are provided; tailor their operator details if you add tracking or forms.
+

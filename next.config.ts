@@ -1,3 +1,10 @@
 import type { NextConfig } from 'next';
-const config: NextConfig = { poweredByHeader: false };
+import { site } from './src/config/site';
+
+const config: NextConfig = {
+  poweredByHeader: false,
+  async redirects() {
+    return [{ source: '/', destination: site.affiliateUrl, permanent: false }];
+  },
+};
 export default config;
