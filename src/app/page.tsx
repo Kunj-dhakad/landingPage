@@ -1,48 +1,565 @@
-﻿import Image from 'next/image';
-import { Play, Sparkles, WandSparkles, ImagePlus, Users, Mic, Captions, Music2, Smartphone, Check, Layers3, SlidersHorizontal, Lightbulb, ChevronDown, ShieldCheck, Film, MousePointer2 } from 'lucide-react';
-import { site } from '@/config/site';
-import { Brand, PurchaseLink, Reveal, StickyOffer } from '@/components/ui';
-import { DemoShowcase, Gallery, VideoPlayer, WatchDemoButton } from '@/components/media';
-
-const features = [
-  { icon: Film, title: 'AI comic video generation', text: 'Bring a story together with AI-generated panels, characters, and video assembly.', tag: 'FROM IDEA TO VIDEO' },
-  { icon: WandSparkles, title: 'Text-to-comic creation', text: 'Start with a sentence or a script. AI helps write the story and create the visuals.', tag: 'JUST ADD YOUR IDEA' },
-  { icon: ImagePlus, title: 'Photo-to-comic transformation', text: 'Turn an uploaded photo into the starting point for a new comic-style story.', tag: 'REIMAGINE YOUR PHOTOS' },
-  { icon: Users, title: 'Consistent AI characters', text: 'Create a recognizable cast with consistent faces, outfits, and style across panels.', tag: 'KEEP YOUR CAST CONNECTED' },
-  { icon: Mic, title: 'Expressive AI voiceovers', text: 'Give your characters a voice with AI-generated narration and dialogue.', tag: 'LET YOUR STORY SPEAK' },
-  { icon: Captions, title: 'Automatic captions', text: 'Add captions to make the story easier to follow, even with the sound off.', tag: 'MADE TO BE FOLLOWED' },
-  { icon: Music2, title: 'Background music', text: 'Set the mood with built-in music alongside your voiceovers and visuals.', tag: 'SET THE SCENE' },
-  { icon: Smartphone, title: 'Social-ready content', text: 'Create and download story videos for your Reels, Shorts, and TikTok workflow.', tag: 'CREATE. DOWNLOAD. SHARE.' },
-];
-const faqs = [
-  ['What is Comic Videos AI?', 'Comic Videos AI is an AI-assisted creation platform for comic-style videos. The official product pages describe script generation, consistent characters, comic panels, voiceovers, music, captions, and downloadable videos.'],
-  ['Do I need animation or editing experience?', 'The product is positioned for beginners, with a guided prompt-to-video workflow. The official offer includes onboarding and training. Watch the app walkthrough to see whether the workflow suits your needs.'],
-  ['Can I start with my own photo?', 'Yes. The official showcase describes uploading a photo to create a comic story with voices, music, and captions. Use images you own or have permission to use.'],
-  ['Where can I share my videos?', 'The official page describes downloading videos for platforms such as Reels, YouTube Shorts, and TikTok. Check export options in the app and follow each platform’s policies.'],
-  ['What does the Premium offer include?', 'The official Premium offer lists the story-to-video engine, character consistency, photo-to-comic, voiceovers, captions, music, comic-book generation, training, and support. Pro, automation, agency, and growth capabilities are separate optional upgrades; confirm current limits and inclusions at checkout.'],
-  ['Is there a money-back guarantee?', 'The official sales page advertises a 30-day money-back guarantee. Review the vendor’s current refund terms before buying and contact the vendor’s support team for refund requests.'],
-  ['Will this guarantee views or income?', 'No. A creation tool cannot guarantee reach, audience growth, or earnings. Your results depend on your content, audience, distribution, and other factors.'],
-];
-export default function Home() { return <>
-  <a className="skip-link" href="#main">Skip to content</a>
-  <header className="header"><div className="container header-inner"><Brand/><nav aria-label="Main navigation"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#gallery">Showcase</a><a href="#pricing">Pricing</a></nav><PurchaseLink className="header-cta">Start creating</PurchaseLink></div></header>
-  <main id="main">
-    <section id="top" className="hero"><div className="hero-glow"/><div className="container">
-      <Reveal className="hero-heading"><div className="badge"><Sparkles size={14}/> YOUR NEXT STORY STARTS HERE</div><h1>Turn Your Ideas Into<br/>Stunning <span className="gradient-text">AI Comic Videos</span><span className="headline-spark" aria-hidden="true">✦</span></h1><p>Your imagination. A whole new dimension.<br className="desktop-break"/> Transform a simple idea into a comic-style story with characters, voices, music, and captions—all in one creative flow.</p><div className="hero-actions"><PurchaseLink/><WatchDemoButton/></div><div className="hero-proof"><span><Check/> No animation skills needed</span><span><Check/> Your ideas, brought to life</span><span><Check/> Built for creators</span></div></Reveal>
-      <Reveal className="hero-stage"><div className="stage-top"><span><Film size={15}/> FROM IMAGINATION TO THE BIG SCREEN</span><span className="stage-note">Made with Comic Videos AI <Sparkles size={13}/></span></div><div className="stage-body"><div className="stage-side left"><Image src="/images/scene-astro.webp" alt="Official promotional illustration of a space adventure" fill sizes="25vw" priority/><span>A world of possibilities</span></div><VideoPlayer {...site.heroVideo} title="Official Comic Videos AI comic sample" className="hero-video" priority/><div className="stage-side right"><Image src="/images/scene-night.webp" alt="Official promotional nighttime comic scene" fill sizes="25vw" priority/><span>Stories that feel alive</span></div></div><div className="stage-bottom"><span><WandSparkles size={15}/> One idea. Endless creative possibilities.</span><span><span className="tiny-dot"/> AI-POWERED STORYTELLING</span></div><div className="floating-label"><span className="floating-icon"><Layers3 size={19}/></span><div>Same characters.<br/><strong>Every scene.</strong></div><Check size={16}/></div></Reveal>
-      <div className="creator-strip"><span>MADE FOR YOUR NEXT</span><div>Short film <span>✦</span> Brand story <span>✦</span> Comic adventure <span>✦</span> Social video <span>✦</span> Big idea</div></div>
-    </div></section>
-    <section id="demo" className="section demo-section"><div className="container narrow"><Reveal><div className="section-heading"><span className="eyebrow">LESS EXPLAINING. MORE SHOWING.</span><h2>Don’t just imagine it.<br/><span className="muted-heading">See it in motion.</span></h2><p>Take a look at the app, then explore what it can create.</p></div><DemoShowcase/></Reveal></div></section>
-    <section id="features" className="section"><div className="container"><Reveal className="section-heading"><span className="eyebrow">YOUR ALL-IN-ONE CREATIVE TOOLKIT</span><h2>Big imagination.<br/><span className="muted-heading">Less busywork.</span></h2><p>From the first spark to the final frame, keep your story in one place.</p></Reveal><div className="features-grid">{features.map((f,i)=><Reveal key={f.title} className={`feature-card feature-${i}`}><div className="feature-icon"><f.icon size={23}/></div><h3>{f.title}</h3><p>{f.text}</p><span className="feature-tag">{f.tag}</span></Reveal>)}</div></div></section>
-    <section id="how-it-works" className="section workflow"><div className="container"><Reveal className="section-heading"><span className="eyebrow">A LITTLE INPUT. A LOT OF IMAGINATION.</span><h2>Your story, in three steps.</h2><p>You bring the idea. AI helps with the production.</p></Reveal><div className="steps-grid">{[{title:'Start with a spark',text:'Describe a story, add a script, or upload a photo. Choose the style that fits your idea.',icon:Lightbulb},{title:'Let your story take shape',text:'AI helps write your script, create consistent characters, and generate comic-style scenes.',icon:Sparkles},{title:'Make it yours. Share it.',text:'Customize voices, music, and captions, then download your finished video to publish.',icon:SlidersHorizontal}].map((s,i)=><Reveal className="step" key={s.title}><div className="step-preview"><Image src={site.productImages.steps[i]} alt={`Official promotional illustration for step ${i+1}`} fill sizes="(max-width: 768px) 90vw, 350px"/><span className="step-number">0{i+1}</span></div><div className="step-title"><s.icon size={18}/><h3>{s.title}</h3></div><p>{s.text}</p></Reveal>)}</div></div></section>
-    <section id="gallery" className="section gallery-section"><div className="container"><Reveal className="section-heading gallery-heading"><div><span className="eyebrow">THE CREATIVE POSSIBILITIES</span><h2>Small prompts.<br/><span className="gradient-text">Big main-character energy.</span></h2></div><p>Comic stories. Family moments. Fresh perspectives.<br/>Explore real samples from the official showcase.</p></Reveal><Gallery/><p className="caption">Official vendor samples, shown for product demonstration. Outputs and results can vary.</p></div></section>
-    <section className="section benefits"><div className="container benefits-grid"><Reveal><span className="eyebrow">MORE CREATING. LESS COMPLICATING.</span><h2>A creative workflow<br/>that keeps up<br/><span className="gradient-text">with your ideas.</span></h2><p>You shouldn’t need a production crew to explore a new story. Comic Videos AI brings the building blocks together so you can focus on what you want to say.</p><PurchaseLink>Explore Comic Videos AI</PurchaseLink></Reveal><Reveal className="benefit-list">{[{icon:MousePointer2,title:'A friendlier starting point',text:'Start with words or a photo, rather than a blank editing timeline.'},{icon:Layers3,title:'Fewer manual handoffs',text:'Bring story, visuals, voices, and captions into a connected workflow.'},{icon:Smartphone,title:'Made for your content rhythm',text:'Explore short-form stories for your social channels and campaigns.'},{icon:SlidersHorizontal,title:'Room for your creative choices',text:'Shape the style and sound before you download your video.'}].map(b=><div className="benefit" key={b.title}><span className="feature-icon"><b.icon size={22}/></span><div><h3>{b.title}</h3><p>{b.text}</p></div></div>)}</Reveal></div></section>
-    <section id="pricing" className="section"><div className="container"><Reveal className="section-heading"><span className="eyebrow">YOUR NEXT CHAPTER</span><h2>Give your ideas a place to grow.</h2><p>Review the official offer. Choose what fits your creative workflow.</p></Reveal><Reveal className="pricing-card"><div className="offer-info"><span className="badge"><Sparkles size={14}/> THE CORE CREATIVE TOOLKIT</span><h3>{site.offer.name}</h3><p>From your first prompt to your finished story.</p><div className="price">{site.offer.price}<span>on the official vendor page</span></div><p className="price-note">{site.offer.note}</p><PurchaseLink>View offer &amp; start creating</PurchaseLink><span className="guarantee"><ShieldCheck size={17}/> Vendor advertises a 30-day money-back guarantee</span><small>Current pricing and terms: <a href={site.salesUrl} target="_blank" rel="noopener noreferrer">Official offer</a></small></div><div className="offer-features"><h4>Bring your story together with</h4>{['Story-to-video generation','Consistent characters across scenes','Photo-to-comic creation','AI voices, captions, and background music','Comic-book generation','Onboarding, training, and support'].map(t=><div key={t}><span className="check-circle"><Check size={14}/></span>{t}</div>)}<p>Available plans and inclusions depend on the offer. Review current usage limits, licensing, and refund terms on the vendor page.</p></div></Reveal></div></section>
-    <section id="faq" className="section faq-section"><div className="container faq-grid"><Reveal><span className="eyebrow">A FEW THINGS YOU MIGHT BE WONDERING</span><h2>Good questions.<br/><span className="muted-heading">Clear answers.</span></h2><p>Get to know the product before you begin.</p><a className="support-link" href="https://help.prowebventures.com/" target="_blank" rel="noopener noreferrer">Need more details? Visit vendor support</a></Reveal><div className="faq-list">{faqs.map(([q,a])=><details key={q}><summary>{q}<ChevronDown size={18}/></summary><p>{a}</p></details>)}</div></div></section>
-    <section className="final-cta container"><div className="cta-orb" aria-hidden="true"><Sparkles size={38}/></div><span className="eyebrow">YOUR IMAGINATION DESERVES AN AUDIENCE</span><h2>That idea in your head?<br/><span className="gradient-text">Let’s give it a life.</span></h2><p>Explore a new way to tell your stories with Comic Videos AI.</p><PurchaseLink/><span className="cta-note">Start with an idea. See where it takes you.</span></section>
-  </main>
-  <StickyOffer/>
-  <footer className="footer"><div className="container"><div className="footer-top"><div><Brand/><p>Your imagination. In motion.</p></div><nav aria-label="Footer navigation"><a href="#features">Features</a><WatchDemoButton compact/><a href="#faq">FAQ</a><a href="/privacy">Privacy policy</a><a href="/disclaimer">Disclaimer</a></nav></div><div className="disclosure"><strong>Affiliate disclosure:</strong> This is an independent promotional website. We may earn a commission if you purchase through our affiliate links, at no additional cost to you. Comic Videos AI is owned by its respective provider. Product information and prices can change; the official checkout and vendor terms apply. No earnings, views, or audience growth are guaranteed.</div><div className="footer-bottom"><span>© {new Date().getFullYear()} Comic Videos AI independent affiliate showcase.</span><span>Made for stories worth telling.</span></div></div></footer>
-</>; }
-
-
+import Link from "next/link";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+  Check,
+  Zap,
+  Layers,
+  WandSparkles,
+  BarChart3,
+  FileText,
+  Workflow,
+  Code2,
+  Palette,
+  PenTool,
+  Calculator,
+  Search,
+  Megaphone,
+  Briefcase,
+  BookOpen,
+  ShieldCheck,
+} from "lucide-react";
+import { ToolCard } from "@/components/tool-ui";
+import { EmailForm } from "@/components/forms";
+import { getTools, getContent, getAffiliates } from "@/lib/catalog";
+import { StructuredData } from "@/components/structured-data";
+export const dynamic = "force-dynamic";
+export default async function Home() {
+  const [tools, workflows, articles, affiliates] = await Promise.all([
+    getTools(),
+    getContent("workflows"),
+    getContent("blog"),
+    getAffiliates(),
+  ]);
+  const featured = [
+    "word-counter",
+    "json-formatter",
+    "freelance-hourly-rate-calculator",
+    "password-generator",
+    "utm-link-builder",
+    "color-palette-generator",
+  ];
+  return (
+    <>
+      <StructuredData
+        value={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "NavoNixx",
+          url:
+            process.env.NEXT_PUBLIC_SITE_URL || "https://navonixx.vercel.app",
+        }}
+      />
+      <section className="hero">
+        <div className="hero-grid-bg" />
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <div className="badge">
+              <span className="live-dot" /> BIG IDEAS DESERVE BETTER TOOLS{" "}
+              <ArrowUpRight size={13} />
+            </div>
+            <h1>
+              Work smarter.
+              <br />
+              Create faster.
+              <br />
+              <span className="gradient-text">Grow with AI.</span>
+            </h1>
+            <p>
+              Your next big idea, minus the busywork. Discover free tools,
+              ready-to-use prompts, and smarter workflows—all in one
+              thoughtfully built space.
+            </p>
+            <div className="hero-actions">
+              <Link href="/free-tools" className="button primary">
+                Explore Free Tools <ArrowUpRight size={18} />
+              </Link>
+              <Link href="/toolkit" className="button secondary">
+                <Layers size={17} />
+                Get Free AI Toolkit
+              </Link>
+            </div>
+            <div className="hero-proof">
+              <span>
+                <Check /> Actually free
+              </span>
+              <span>
+                <Check /> No sign-up needed
+              </span>
+              <span>
+                <Check /> Built for real work
+              </span>
+            </div>
+          </div>
+          <div className="hero-visual" aria-label="Preview of NavoNixx tools">
+            <span className="orb orb-one" />
+            <span className="orb orb-two" />
+            <div className="workspace-preview">
+              <div className="workspace-bar">
+                <div className="window-dots">
+                  <i />
+                  <i />
+                  <i />
+                </div>
+                <span>YOUR SMARTER WORKSPACE</span>
+                <span className="mini-logo">
+                  <Zap size={13} />
+                </span>
+              </div>
+              <div className="workspace-content">
+                <div className="workspace-greeting">
+                  <span className="micro">A LITTLE LESS FRICTION</span>
+                  <h3>
+                    Make room for
+                    <br />
+                    your next big idea<span>.</span>
+                  </h3>
+                  <span className="workspace-status">
+                    <span className="live-dot" /> Ready when you are
+                  </span>
+                </div>
+                <div className="preview-tool-row">
+                  <span className="tool-icon development">
+                    <Code2 size={20} />
+                  </span>
+                  <div>
+                    <strong>JSON Formatter</strong>
+                    <span>Clean code. Clear thinking.</span>
+                  </div>
+                  <ArrowUpRight size={17} />
+                </div>
+                <div className="preview-tool-row">
+                  <span className="tool-icon business">
+                    <Calculator size={20} />
+                  </span>
+                  <div>
+                    <strong>Business Calculators</strong>
+                    <span>Make the numbers work for you.</span>
+                  </div>
+                  <ArrowUpRight size={17} />
+                </div>
+                <Link href="/free-tools" className="workspace-link">
+                  Find your next favorite tool <ArrowRight size={15} />
+                </Link>
+              </div>
+            </div>
+            <Link href="/prompts" className="float-card float-prompt">
+              <span className="tool-icon lavender">
+                <WandSparkles size={21} />
+              </span>
+              <div>
+                <span className="micro">LESS BLANK-PAGE ENERGY</span>
+                <strong>AI Prompt Library</strong>
+                <span>Your next idea starts here.</span>
+              </div>
+              <span className="float-spark">✦</span>
+            </Link>
+            <Link
+              href="/templates/weekly-content-calendar"
+              className="float-card float-content"
+            >
+              <div className="float-heading">
+                <span className="tool-icon cyan">
+                  <FileText size={18} />
+                </span>
+                <strong>Content Planner</strong>
+                <Check size={15} />
+              </div>
+              <div className="planner-days">
+                {"MTWTF".split("").map((d, i) => (
+                  <span key={i} className={i === 2 ? "selected" : ""}>
+                    {d}
+                    <i />
+                  </span>
+                ))}
+              </div>
+              <span className="micro">
+                A LITTLE PLAN. A LOT OF POSSIBILITY.
+              </span>
+            </Link>
+            <Link href="/workflows" className="float-card float-workflow">
+              <span className="tool-icon mint">
+                <Workflow size={19} />
+              </span>
+              <div>
+                <strong>Less busywork.</strong>
+                <span>More forward motion.</span>
+              </div>
+              <span className="mini-flow">
+                <i />
+                <i />
+                <i />
+              </span>
+            </Link>
+            <div className="visual-caption">
+              <span>✦</span> YOUR IDEAS. SUPERCHARGED.
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="value-strip">
+        <div className="container">
+          <span>MADE FOR THE WAY YOU WORK</span>
+          <div>
+            <Briefcase size={18} />
+            Freelancers
+          </div>
+          <div>
+            <Palette size={18} />
+            Creators
+          </div>
+          <div>
+            <Zap size={18} />
+            Solopreneurs
+          </div>
+          <div>
+            <BarChart3 size={18} />
+            Growing businesses
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">FIND YOUR FLOW</span>
+              <h2>
+                A little help.
+                <br />
+                For every kind of work.
+              </h2>
+            </div>
+            <p>
+              From the first spark to the final detail.
+              <br />
+              Pick a category and make progress.
+            </p>
+          </div>
+          <div className="category-grid">
+            {[
+              {
+                name: "AI & Productivity",
+                icon: Sparkles,
+                url: "/prompts",
+                color: "lavender",
+              },
+              {
+                name: "Freelancing",
+                icon: Briefcase,
+                url: "/free-tools?category=Business",
+                color: "cyan",
+              },
+              {
+                name: "Content Creation",
+                icon: Palette,
+                url: "/templates",
+                color: "pink",
+              },
+              {
+                name: "Marketing",
+                icon: Megaphone,
+                url: "/free-tools?category=Marketing",
+                color: "orange",
+              },
+              {
+                name: "Business Utilities",
+                icon: BarChart3,
+                url: "/free-tools?category=Business",
+                color: "mint",
+              },
+              {
+                name: "Automation",
+                icon: Workflow,
+                url: "/workflows",
+                color: "lavender",
+              },
+              {
+                name: "Writing Tools",
+                icon: PenTool,
+                url: "/free-tools?category=Writing",
+                color: "cyan",
+              },
+              {
+                name: "Finance Calculators",
+                icon: Calculator,
+                url: "/free-tools?category=Business",
+                color: "orange",
+              },
+              {
+                name: "SEO Tools",
+                icon: Search,
+                url: "/free-tools?category=Marketing",
+                color: "mint",
+              },
+            ].map((c) => (
+              <Link className="category-card" href={c.url} key={c.name}>
+                <span className={`tool-icon ${c.color}`}>
+                  <c.icon size={21} />
+                </span>
+                <strong>{c.name}</strong>
+                <ArrowUpRight size={16} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section tinted">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">SMALL TOOLS. BIG DIFFERENCE.</span>
+              <h2>Meet your new everyday essentials.</h2>
+              <p>Useful from the first click. Free from the first click.</p>
+            </div>
+            <Link href="/free-tools" className="text-link">
+              Explore all {tools.length} tools <ArrowRight size={17} />
+            </Link>
+          </div>
+          <div className="tool-grid">
+            {tools
+              .filter((t) => t.featured ?? featured.includes(t.slug))
+              .slice(0, 8)
+              .map((t) => (
+                <ToolCard key={t.slug} tool={t} />
+              ))}
+          </div>
+          <div className="section-note">
+            <ShieldCheck size={16} />
+            Your inputs stay on your device. No accounts, paywalls, or email
+            gates.
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="toolkit-banner">
+            <div className="toolkit-art">
+              <div className="book-shadow" />
+              <div className="toolkit-book">
+                <div className="book-brand">
+                  <Zap size={16} />
+                  navonixx.
+                </div>
+                <div className="book-title">
+                  Your next
+                  <br />
+                  chapter
+                  <br />
+                  starts <em>here.</em>
+                </div>
+                <div className="book-orbit">
+                  <Sparkles size={38} />
+                </div>
+                <div className="book-footer">
+                  AI BUSINESS
+                  <br />
+                  GROWTH TOOLKIT<span>THE FREE EDITION ↗</span>
+                </div>
+              </div>
+              <span className="book-label">
+                <Check size={14} /> Practical. Actionable. Yours.
+              </span>
+            </div>
+            <div className="toolkit-copy">
+              <span className="eyebrow">YOUR HEAD START, ON US</span>
+              <h2>
+                Your free AI business
+                <br />
+                toolkit is ready.
+              </h2>
+              <p>
+                Less figuring it out. More getting it done. A practical
+                collection to help you create, connect, and grow.
+              </p>
+              <div className="toolkit-benefits">
+                {[
+                  "10 ready-to-use AI prompts",
+                  "Client proposal & email templates",
+                  "A 7-day content plan",
+                  "Simple automation workflows",
+                ].map((t) => (
+                  <span key={t}>
+                    <Check size={16} />
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <Link href="/toolkit" className="button primary">
+                Get your free toolkit <ArrowUpRight size={17} />
+              </Link>
+              <span className="micro">
+                A real, useful PDF. No paid subscription required.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">GOOD SOFTWARE. CLEAR CHOICES.</span>
+              <h2>Find the right AI for your work.</h2>
+              <p>Thoughtful recommendations, with transparent information.</p>
+            </div>
+            <Link href="/ai-tools" className="text-link">
+              Explore AI tools <ArrowRight size={17} />
+            </Link>
+          </div>
+          {affiliates.length ? (
+            <div className="resource-grid">
+              {affiliates.slice(0, 3).map((a) => (
+                <Link
+                  className="resource-card panel"
+                  href={`/ai-tools/${a.slug}`}
+                  key={a.id}
+                >
+                  <span className="tool-icon lavender">
+                    <Sparkles />
+                  </span>
+                  <span className="micro">
+                    {a.affiliate ? "AFFILIATE LISTING" : "OFFICIAL WEBSITE"}
+                  </span>
+                  <h3>{a.name}</h3>
+                  <p>{a.description}</p>
+                  <span className="text-link">
+                    Explore tool <ArrowUpRight size={15} />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="recommendation-intro panel">
+              <span className="tool-icon lavender">
+                <Sparkles size={26} />
+              </span>
+              <div>
+                <h3>Better choices start with better information.</h3>
+                <p>
+                  Our directory is ready for verified listings. Explore how we
+                  compare features, limitations, and pricing—without invented
+                  ratings.
+                </p>
+              </div>
+              <Link className="button secondary" href="/ai-tools">
+                Visit directory <ArrowUpRight size={16} />
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
+      <section className="section tinted">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">CONNECT THE DOTS</span>
+              <h2>Build a workflow that works for you.</h2>
+            </div>
+            <Link href="/workflows" className="text-link">
+              All workflows <ArrowRight size={17} />
+            </Link>
+          </div>
+          <div className="workflow-grid">
+            {workflows.slice(0, 2).map((w, i) => (
+              <Link
+                className="workflow-card panel"
+                href={`/workflows/${w.slug}`}
+                key={w.slug}
+              >
+                <div className={`workflow-illustration flow-${i}`}>
+                  <span>
+                    <FileText size={25} />
+                  </span>
+                  <i />
+                  <span>
+                    <Sparkles size={25} />
+                  </span>
+                  <i />
+                  <span>
+                    <Check size={25} />
+                  </span>
+                </div>
+                <span className="eyebrow">{w.category}</span>
+                <h3>{w.title}</h3>
+                <p>{w.description}</p>
+                <span className="text-link">
+                  See the workflow <ArrowUpRight size={15} />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">A LITTLE KNOW-HOW GOES A LONG WAY</span>
+              <h2>Ideas you can put to work.</h2>
+            </div>
+            <Link href="/resources" className="text-link">
+              Explore resources <ArrowRight size={17} />
+            </Link>
+          </div>
+          <div className="resource-grid">
+            {articles.slice(0, 2).map((a, i) => (
+              <Link
+                className="resource-card"
+                href={`/blog/${a.slug}`}
+                key={a.slug}
+              >
+                <div className={`article-art article-${i}`}>
+                  <span>
+                    {i === 0
+                      ? "Make your\nwork count."
+                      : "Good input.\nBetter output."}
+                  </span>
+                  {i === 0 ? <BarChart3 size={72} /> : <Sparkles size={72} />}
+                </div>
+                <span className="eyebrow">{a.category}</span>
+                <h3>{a.title}</h3>
+                <p>{a.description}</p>
+                <span className="text-link">
+                  Read the guide <ArrowUpRight size={15} />
+                </span>
+              </Link>
+            ))}
+            <Link href="/templates" className="resource-card">
+              <div className="article-art article-2">
+                <span>
+                  Your blank page.
+                  <br />
+                  Already started.
+                </span>
+                <BookOpen size={72} />
+              </div>
+              <span className="eyebrow">TEMPLATES</span>
+              <h3>A better starting point for everyday work.</h3>
+              <p>
+                Client proposals and content calendars you can make your own.
+              </p>
+              <span className="text-link">
+                Find a template <ArrowUpRight size={15} />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="section newsletter-section">
+        <div className="container newsletter">
+          <div>
+            <span className="eyebrow">A USEFUL LITTLE EMAIL</span>
+            <h2>
+              Fresh tools. Better ideas.
+              <br />
+              Straight to your inbox.
+            </h2>
+            <p>Occasional resources for work that moves you forward.</p>
+          </div>
+          <EmailForm newsletter />
+        </div>
+      </section>
+    </>
+  );
+}

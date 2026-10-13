@@ -9,3 +9,9 @@ playwright-report/
 test-results/
 .npm-cache/
 docs/source/
+.vercel
+
+.runtime/
+coverage/
+.env.test.local
+src/generated/
