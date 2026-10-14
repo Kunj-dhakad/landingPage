@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import { assetUrl } from "@/lib/media-assets";
 import dynamic from "next/dynamic";
 import { useEffect, useState, useMemo } from "react";
 import { useTable, tableFeatures } from "@tanstack/react-table";
@@ -23,7 +25,6 @@ import {
   ShieldCheck,
   Menu,
   X,
-  Zap,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -72,7 +73,7 @@ export function AdminFrame({
     <div className={`admin-shell${menuOpen ? " menu-open" : ""}`}>
       <aside className="panel admin-sidebar">
         <Link href="/admin" className="admin-workspace-brand">
-          <Zap size={24} fill="currentColor" />
+          <Image src={assetUrl("/images/navonixx-logo.png")} alt="" width={36} height={36} />
           navonixx<span>.</span>
         </Link>
         <span className="admin-nav-label">WORKSPACE</span>

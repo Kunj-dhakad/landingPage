@@ -1,8 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Copy, Download, Check } from "lucide-react";
+import { Copy, Download, Check, ArrowUpRight } from "lucide-react";
 import { track } from "@/lib/events";
-export function ContentActions({ body, slug }: { body: string; slug: string }) {
+import { copyText } from "@/lib/browser-utils";
+export function ContentActions({
+  body,
+  slug,
+  prompt,
+}: {
+  body: string;
+  slug: string;
+  /** When set, offers one-click links that open the prompt in an assistant. */
+  prompt?: string;
+}) {
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => {
@@ -14,7 +24,7 @@ export function ContentActions({ body, slug }: { body: string; slug: string }) {
         className="button secondary small"
         onClick={async () => {
           try {
-            await navigator.clipboard.writeText(body);
+            await copyText(body);
             setCopied(true);
             track("copy_clicked", slug);
             setTimeout(() => setCopied(false), 1500);
@@ -27,8 +37,26 @@ export function ContentActions({ body, slug }: { body: string; slug: string }) {
         }}
       >
         {copied ? <Check size={15} /> : <Copy size={15} />}{" "}
-        {copied ? "Copied" : "Copy resource"}
+        {copied ? "Copied" : prompt ? "Copy prompt" : "Copy resource"}
       </button>
+      {prompt &&
+        (
+          [
+            ["ChatGPT", "chatgpt", "https://chatgpt.com/?q="],
+            ["Claude", "claude", "https://claude.ai/new?q="],
+          ] as const
+        ).map(([name, id, base]) => (
+          <a
+            key={id}
+            className="button primary small"
+            href={base + encodeURIComponent(prompt)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("affiliate_link_clicked", id)}
+          >
+            Open in {name} <ArrowUpRight size={15} />
+          </a>
+        ))}
       <button
         className="button secondary small"
         onClick={() => {

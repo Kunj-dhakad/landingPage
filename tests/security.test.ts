@@ -6,6 +6,7 @@ import {
   safeDestination,
   hashToken,
   conversionRate,
+  sameOrigin,
 } from "../src/lib/security";
 import {
   emailSchema,
@@ -14,6 +15,36 @@ import {
   affiliateSchema,
 } from "../src/lib/validation";
 import { affiliateContent } from "../src/lib/affiliate-content";
+test("development accepts its local origin and production enforces the configured origin", () => {
+  const env: Record<string, string | undefined> = process.env;
+  const oldMode = env.NODE_ENV;
+  const oldUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  try {
+    process.env.NEXT_PUBLIC_SITE_URL = "https://navonixx.example";
+    const request = (origin?: string) => new Request("http://localhost:3000/api/consent", {
+      headers: origin ? { origin } : {},
+    });
+    env.NODE_ENV = "development";
+    assert.equal(sameOrigin(request("http://localhost:3000")), true);
+    assert.equal(sameOrigin(request("https://evil.example")), false);
+    assert.equal(sameOrigin(request()), false);
+    assert.equal(sameOrigin(new Request("http://localhost:3000/api/consent", {
+      headers: { host: "192.168.0.93:3000", origin: "http://192.168.0.93:3000" },
+    })), true);
+    assert.equal(sameOrigin(new Request("http://192.168.0.93:3000/api/consent", {
+      headers: { origin: "http://192.168.0.93:3000" },
+    })), true);
+    env.NODE_ENV = "production";
+    assert.equal(sameOrigin(request("http://localhost:3000")), false);
+    assert.equal(sameOrigin(request("https://navonixx.example")), true);
+    assert.equal(sameOrigin(request("https://evil.example")), false);
+  } finally {
+    if (oldMode === undefined) delete env.NODE_ENV;
+    else env.NODE_ENV = oldMode;
+    if (oldUrl === undefined) delete process.env.NEXT_PUBLIC_SITE_URL;
+    else process.env.NEXT_PUBLIC_SITE_URL = oldUrl;
+  }
+});
 test("password hashes are salted and do not accept a wrong password", () => {
   const a = hashPassword("a secure long password");
   const b = hashPassword("a secure long password");

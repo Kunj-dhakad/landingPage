@@ -1,4 +1,4 @@
-﻿import { PageHeading } from "@/components/page-heading";
+import { PageHeading } from "@/components/page-heading";
 import Link from "next/link";
 export const metadata = {
   title: "Privacy policy",
@@ -9,6 +9,7 @@ export default function Page() {
     <>
       <PageHeading
         title="Your work stays yours."
+        crumb="Privacy"
         description="Clear choices, minimal data, and tools that work on your device."
         eyebrow="PRIVACY AT NAVONIXX"
       />

@@ -1,0 +1,149 @@
+{
+  "/downloads/navonixx-ai-business-toolkit.pdf": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/documents/toolkits/navonixx-ai-business-toolkit_l7Y5bBgyC.pdf",
+    "fileId": "6acf6cf1ead997d09a490635",
+    "folder": "/navonixx/site/documents/toolkits",
+    "size": 8323,
+    "sha256": "893aa5aa32b7b8a7857bb896253d09518a3d27e3f4516512fb386a4348959c0a"
+  },
+  "/favicon.svg": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/branding/logos/favicon_S5Cp2GzGG.svg",
+    "fileId": "6acf6cf2ead997d09a490f9b",
+    "folder": "/navonixx/site/branding/logos",
+    "size": 180,
+    "sha256": "ee185ce1820ce30c4047c098362ef96aa9bc4cd58563b30b11b714fb0af3f764"
+  },
+  "/images/baby-06.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/previews/baby-06_hrPmyrmEA.webp",
+    "fileId": "6acf6cf4ead997d09a4912ce",
+    "folder": "/navonixx/projects/comic-videos-ai/images/previews",
+    "size": 28512,
+    "sha256": "ea5de302e8ead654e731dd7f019c413f2ebc61f386657f24c49ef1fc8f175ddd"
+  },
+  "/images/baby-07.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/previews/baby-07_wMBtlMrh_.webp",
+    "fileId": "6acf6cf5ead997d09a491788",
+    "folder": "/navonixx/projects/comic-videos-ai/images/previews",
+    "size": 33086,
+    "sha256": "1db3c1d709f5c9e98aadd1cd5a8d397266a12c258be6a106c7858f2da5d02155"
+  },
+  "/images/baby-12.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/previews/baby-12_2r3xse6Twf.webp",
+    "fileId": "6acf6cf7ead997d09a491b34",
+    "folder": "/navonixx/projects/comic-videos-ai/images/previews",
+    "size": 28730,
+    "sha256": "db74c411bea5e04e54ec2cad64009c98ce1a207d34d5e5591a96281bd95504e4"
+  },
+  "/images/comic-02.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/previews/comic-02_XQ5K387xG.webp",
+    "fileId": "6acf6cf8ead997d09a492001",
+    "folder": "/navonixx/projects/comic-videos-ai/images/previews",
+    "size": 35760,
+    "sha256": "557c2d6933e10e5a30975c261cacf73c33ecf12d8f336d882a6aa6fd5edbf940"
+  },
+  "/images/cover-fe.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/product/cover-fe_zQrk212kW.webp",
+    "fileId": "6acf6cfaead997d09a4925d4",
+    "folder": "/navonixx/projects/comic-videos-ai/images/product",
+    "size": 55806,
+    "sha256": "24b3ac8541d060170331c8f2e7dc29a9bc7287521a8be49aaeb8a1446b97d759"
+  },
+  "/images/logo-h-negative.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/branding/logo-h-negative_J4LVNLAeu.webp",
+    "fileId": "6acf6cfbead997d09a493d43",
+    "folder": "/navonixx/projects/comic-videos-ai/images/branding",
+    "size": 15914,
+    "sha256": "e376428f801bc5229df1c489ee310a0416985767e3d39995bb94ba4eb2298b8b"
+  },
+  "/images/mockup-duo-scene.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/product/mockup-duo-scene_EnmGpfDYP.webp",
+    "fileId": "6acf6cfdead997d09a494249",
+    "folder": "/navonixx/projects/comic-videos-ai/images/product",
+    "size": 168870,
+    "sha256": "6f5356224e1443fb9dfbba737f962bd18fb78a5df817c6cd9701d582d3d1bf91"
+  },
+  "/images/navonixx-logo.png": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/branding/logos/navonixx-logo_1gP9LpOrT.png",
+    "fileId": "6acf6d00ead997d09a4951e0",
+    "folder": "/navonixx/site/branding/logos",
+    "size": 1123965,
+    "sha256": "146f644201012786e6f7aa02719c8081bd7d44856b2a23972330a7447a43f0f6"
+  },
+  "/images/scene-astro.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/backgrounds/scene-astro_yFjjh2orW.webp",
+    "fileId": "6acf6d03ead997d09a4962e9",
+    "folder": "/navonixx/projects/comic-videos-ai/images/backgrounds",
+    "size": 15148,
+    "sha256": "5a418f89c882cf653c7fe16fdccabcb8289f41f6f332c23c7addb92ea96f0f1f"
+  },
+  "/images/scene-cinema.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/backgrounds/scene-cinema_6wDI2ugDG.webp",
+    "fileId": "6acf6d05ead997d09a496919",
+    "folder": "/navonixx/projects/comic-videos-ai/images/backgrounds",
+    "size": 13922,
+    "sha256": "a76dd3e61e4765d12930fa1d33a03910d3f68edbad5f1e730ec6204188105d7e"
+  },
+  "/images/scene-night.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/backgrounds/scene-night_wR9ZEJtqL.webp",
+    "fileId": "6acf6d06ead997d09a496eb6",
+    "folder": "/navonixx/projects/comic-videos-ai/images/backgrounds",
+    "size": 16962,
+    "sha256": "4b3205efa47751f0c1183c0b97a270033719551af4b5e650f8232ae24fa627d8"
+  },
+  "/images/step-1.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/steps/step-1_g34iy5afE.webp",
+    "fileId": "6acf6d07ead997d09a49739f",
+    "folder": "/navonixx/projects/comic-videos-ai/images/steps",
+    "size": 84294,
+    "sha256": "4d8078cfe633458f6c0ae1a0c945744b698711c7ab41d4e140532d10a2302163"
+  },
+  "/images/step-2.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/steps/step-2_FkBJvidBM.webp",
+    "fileId": "6acf6d09ead997d09a497cd7",
+    "folder": "/navonixx/projects/comic-videos-ai/images/steps",
+    "size": 80910,
+    "sha256": "7b15ccf3d3668ffae8fd67797b6500b6db86b56fd15b31098028f350b75f71a6"
+  },
+  "/images/step-3.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/images/steps/step-3_HHBNgYjdX.webp",
+    "fileId": "6acf6d0bead997d09a49820c",
+    "folder": "/navonixx/projects/comic-videos-ai/images/steps",
+    "size": 82996,
+    "sha256": "395e320b1b7a2b9206163b94ae202bb6ccf522bf0d3b584ff4a7f9562896f7c8"
+  },
+  "/og.svg": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/branding/social/og_j6PR3SISs.svg",
+    "fileId": "6acf6d0dead997d09a4987d3",
+    "folder": "/navonixx/site/branding/social",
+    "size": 880,
+    "sha256": "a7b045351401c136bce0a1138563fd603ec321295b75a6a76dab6620e3f97eb8"
+  },
+  "/videos/baby-06.mp4": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/videos/demos/baby-06__qz_1MgsH.mp4",
+    "fileId": "6acf6d0fead997d09a498db7",
+    "folder": "/navonixx/projects/comic-videos-ai/videos/demos",
+    "size": 2776340,
+    "sha256": "036b5fb9db726d336bee714ecc6da957da272b528442fcacc427ca10bf2e0e17"
+  },
+  "/videos/baby-07.mp4": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/videos/demos/baby-07_-KRL_6Oac.mp4",
+    "fileId": "6acf6d14ead997d09a49a87d",
+    "folder": "/navonixx/projects/comic-videos-ai/videos/demos",
+    "size": 15164873,
+    "sha256": "031f20bb6e42962632f33e3b35e40c09973f16c6b262c93bc3e2325f5b375319"
+  },
+  "/videos/baby-12.mp4": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/projects/comic-videos-ai/videos/demos/baby-12_UDw675XBc.mp4",
+    "fileId": "6acf6d20ead997d09a49cd6a",
+    "folder": "/navonixx/projects/comic-videos-ai/videos/demos",
+    "size": 13685203,
+    "sha256": "260e5d1df37c03be0f0baba241e8838c47d5b7bb70ebf20295388beaec0b4bd2"
+  },
+  "/images/navonixx-tools-banner.png": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/banners/navonixx-tools-banner_1ii0FG_La1.png",
+    "fileId": "6acf72eeead997d09a64c01d",
+    "folder": "/navonixx/site/images/banners",
+    "size": 1534620,
+    "sha256": "3c8b4346f80961061d4eef1380b1bf5f2d7f261dc9ceb9728397c17ac55a3ca7"
+  }
+}

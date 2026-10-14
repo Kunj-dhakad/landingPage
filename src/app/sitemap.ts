@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 export const dynamic = "force-dynamic";
 import { getTools, getContent, getAffiliates } from "@/lib/catalog";
+import { offers, offerBySlug } from "@/lib/offers";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base =
     process.env.NEXT_PUBLIC_SITE_URL || "https://navonixx.vercel.app";
@@ -13,6 +14,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/free-tools",
     "/ai-tools",
+    "/ai-tools/finder",
+    "/reviews",
+    ...offers.map((o) => `/reviews/${o.slug}`),
     "/ai-tools/compare",
     "/toolkit",
     "/prompts",
@@ -29,7 +33,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...content
       .filter((c) => c.kind !== "toolkit")
       .map((c) => `/${c.kind}/${c.slug}`),
-    ...affiliates.map((a) => `/ai-tools/${a.slug}`),
+    ...affiliates
+      .filter((a) => !offerBySlug(a.slug))
+      .map((a) => `/ai-tools/${a.slug}`),
   ];
   return paths.map((p) => ({
     url: base + p,

@@ -9,10 +9,10 @@ export default function Image() {
         display: "flex",
         width: "100%",
         height: "100%",
-        background: "#f2f5fb",
+        background: "#030611",
         padding: "65px 80px",
         flexDirection: "column",
-        color: "#07142f",
+        color: "#f5f8ff",
       }}
     >
       <div
@@ -23,7 +23,7 @@ export default function Image() {
           marginBottom: 55,
         }}
       >
-        navonixx<span style={{ color: "#2563eb" }}>.</span>
+        navonixx<span style={{ color: "#0066ff" }}>.</span>
       </div>
       <div
         style={{
@@ -54,7 +54,7 @@ export default function Image() {
           fontWeight: 700,
           letterSpacing: -4,
           lineHeight: 1.12,
-          color: "#2563eb",
+          color: "#0066ff",
         }}
       >
         Grow with AI.
@@ -63,7 +63,7 @@ export default function Image() {
         style={{
           display: "flex",
           fontSize: 23,
-          color: "#65728b",
+          color: "#a4b1cb",
           marginTop: 35,
         }}
       >

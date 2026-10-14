@@ -21,6 +21,7 @@ export default async function Page() {
         title="Your next chapter starts here."
         description="The NavoNixx AI Business Growth Toolkit. A useful collection for freelancers and small businesses—ready to make your own."
         eyebrow="YOUR FREE AI BUSINESS TOOLKIT"
+        crumb="Free Toolkit"
       />
       <div className="container page-body">
         <div className="toolkit-banner">

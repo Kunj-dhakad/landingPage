@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { Search, ArrowUpRight, Sparkles } from "lucide-react";
 import { track } from "@/lib/events";
+import { ToolMonogram } from "@/components/funnel";
+import { hasFreePlan, type Editorial } from "@/lib/affiliate-content";
 export type Listing = {
   slug: string;
   name: string;
@@ -18,6 +19,7 @@ export type Listing = {
   limitations: string[];
   affiliate: boolean;
   logoUrl?: string | null;
+  editorial?: Editorial | null;
 };
 export function AffiliateDirectory({ listings }: { listings: Listing[] }) {
   const [q, setQ] = useState("");
@@ -100,28 +102,23 @@ export function AffiliateDirectory({ listings }: { listings: Listing[] }) {
             key={a.slug}
           >
             <div className="card-top">
-              <span className="tool-icon lavender">
-                {a.logoUrl ? (
-                  <Image src={a.logoUrl} alt="" width={25} height={25} />
-                ) : (
-                  <Sparkles size={22} />
-                )}
-              </span>
-              <span className="pill">
-                {a.pricingModel === "UNVERIFIED"
-                  ? "Pricing unverified"
-                  : a.pricingModel.toLowerCase()}
+              <ToolMonogram name={a.name} logoUrl={a.logoUrl} />
+              <span className={hasFreePlan(a.pricingModel) ? "pill free" : "pill"}>
+                {hasFreePlan(a.pricingModel)
+                  ? "Free plan"
+                  : a.pricingModel === "PAID"
+                    ? "Paid"
+                    : "Check pricing"}
               </span>
             </div>
-            <span className="micro">
-              {a.affiliate ? "AFFILIATE LISTING" : "NO AFFILIATE RELATIONSHIP"}
-            </span>
+            <span className="micro">{a.category.toUpperCase()}</span>
             <h3>{a.name}</h3>
+            {a.editorial && <strong className="best-for">Best for: {a.editorial.bestFor}</strong>}
             <p>{a.description}</p>
             <div className="card-bottom">
-              <span>{a.category}</span>
+              <span>{a.affiliate ? "Affiliate link" : "No affiliate link"}</span>
               <span>
-                Explore tool <ArrowUpRight size={14} />
+                Read our take <ArrowUpRight size={14} />
               </span>
             </div>
           </Link>

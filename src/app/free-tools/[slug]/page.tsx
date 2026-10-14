@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PageHeading } from "@/components/page-heading";
-import { ToolRunner, ToolCard } from "@/components/tool-ui";
-import { getTools } from "@/lib/catalog";
+import { ToolRunner, ToolCard, ToolHeader } from "@/components/tool-ui";
+import { getTools, getAffiliates } from "@/lib/catalog";
+import { categoryPicks } from "@/lib/affiliate-content";
+import { databaseReady } from "@/lib/db";
+import { ToolMonogram, VisitButton } from "@/components/funnel";
 import { StructuredData } from "@/components/structured-data";
 type Props = { params: Promise<{ slug: string }> };
 export const dynamic = "force-dynamic";
@@ -10,16 +12,21 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const tool = (await getTools()).find((t) => t.slug === slug);
   return {
-    title: tool?.seoTitle || tool?.name || "Tool not found",
+    title:
+      tool?.seoTitle || (tool ? `${tool.name} – Free Online Tool` : "Tool not found"),
     description: tool?.seoDescription || tool?.description,
     alternates: { canonical: `/free-tools/${slug}` },
   };
 }
 export default async function Page({ params }: Props) {
   const { slug } = await params;
-  const tools = await getTools();
+  const [tools, affiliates] = await Promise.all([getTools(), getAffiliates()]);
   const tool = tools.find((t) => t.slug === slug);
   if (!tool) notFound();
+  const picks = (categoryPicks[tool.category] ?? [])
+    .map((s) => affiliates.find((a) => a.slug === s))
+    .filter((a) => a !== undefined);
+  const redirect = databaseReady();
   const related = tools
     .filter((t) => t.category === tool.category && t.slug !== slug)
     .slice(0, 3);
@@ -36,13 +43,10 @@ export default async function Page({ params }: Props) {
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         }}
       />
-      <PageHeading
-        title={tool.name}
-        description={tool.description}
-        eyebrow={`${tool.category.toUpperCase()} · FREE FOREVER`}
-        parent={["Free tools", "/free-tools"]}
-      />
-      <div className="container page-body">
+      <div className="container tr-page">
+        <ToolHeader tool={tool} />
+      </div>
+      <div className="container page-body tool-page-body">
         <ToolRunner key={tool.slug} tool={tool} />
         <div className="tool-guide">
           <div>
@@ -54,8 +58,8 @@ export default async function Page({ params }: Props) {
                 starting point.
               </li>
               <li>
-                Select Run tool to calculate or transform your input. Check any
-                validation messages.
+                Your result updates as you type. Check any validation messages
+                that appear.
               </li>
               <li>
                 Copy or download the result. Reset restores the example for
@@ -96,6 +100,38 @@ export default async function Page({ params }: Props) {
             </details>
           </div>
         </div>
+        {picks.length > 0 && (
+          <section className="tool-picks panel">
+            <div>
+              <span className="eyebrow">GO FURTHER WITH AI</span>
+              <h2>Doing a lot of {tool.category.toLowerCase()} work?</h2>
+              <p>
+                This free tool handles the quick job. For bigger, everyday
+                {" "}{tool.category.toLowerCase()} tasks, these are the AI tools
+                we would try first.
+              </p>
+            </div>
+            <div className="tool-picks-list">
+              {picks.map((a) => (
+                <div key={a.slug} className="tool-pick">
+                  <ToolMonogram name={a.name} logoUrl={a.logoUrl} size={42} />
+                  <div>
+                    <Link href={`/ai-tools/${a.slug}`}>
+                      <strong>{a.name}</strong>
+                    </Link>
+                    <span>{a.editorial?.bestFor ?? a.description}</span>
+                  </div>
+                  <VisitButton
+                    listing={a}
+                    redirect={redirect}
+                    className="button secondary small"
+                    label="Try it"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
         <div className="section-heading">
           <h2>Keep the momentum.</h2>
           <Link href="/toolkit" className="text-link">

@@ -1,9 +1,11 @@
+import { createUUID } from "./browser-utils";
 export type Field = {
   key: string;
   label: string;
   value: string;
-  type?: "number" | "text" | "textarea";
+  type?: "number" | "text" | "textarea" | "select";
   min?: number;
+  options?: string[];
 };
 export type Tool = {
   slug: string;
@@ -51,8 +53,10 @@ const entries: [string, string, string, string, Field[]][] = [
       ...text(),
       {
         key: "mode",
-        label: "Case: upper, lower, title, sentence",
+        label: "Case",
         value: "title",
+        type: "select",
+        options: ["upper", "lower", "title", "sentence"],
       },
     ],
   ],
@@ -122,7 +126,7 @@ const entries: [string, string, string, string, Field[]][] = [
     "Encode or decode Unicode text as Base64.",
     [
       ...text(),
-      { key: "mode", label: "Mode: encode or decode", value: "encode" },
+      { key: "mode", label: "Mode", value: "encode", type: "select", options: ["encode", "decode"] },
     ],
   ],
   [
@@ -132,7 +136,7 @@ const entries: [string, string, string, string, Field[]][] = [
     "Safely encode and decode URL components.",
     [
       ...text("hello world & AI"),
-      { key: "mode", label: "Mode: encode or decode", value: "encode" },
+      { key: "mode", label: "Mode", value: "encode", type: "select", options: ["encode", "decode"] },
     ],
   ],
   [
@@ -250,7 +254,7 @@ const entries: [string, string, string, string, Field[]][] = [
     "Add or extract GST at a rate you choose.",
     [
       ...nums(["amount", "Amount", "1000"], ["rate", "GST rate (%)", "18"]),
-      { key: "mode", label: "Mode: add or extract", value: "add" },
+      { key: "mode", label: "GST is", value: "add", type: "select", options: ["add", "extract"] },
     ],
   ],
   [
@@ -531,7 +535,7 @@ export function runTool(slug: string, v: Record<string, string>): string {
       const n = num("count", true);
       if (n > 100 || !Number.isInteger(n))
         throw Error("Choose an integer from 1 to 100.");
-      return Array.from({ length: n }, () => crypto.randomUUID()).join("\n");
+      return Array.from({ length: n }, () => createUUID()).join("\n");
     }
     case "password-generator": {
       const n = num("length", true);

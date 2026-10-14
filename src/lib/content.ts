@@ -1,3 +1,5 @@
+import { assetUrl } from "@/lib/media-assets";
+import { contentLibrary } from "./content-library";
 export type ContentItem = {
   slug: string;
   kind: string;
@@ -146,7 +148,7 @@ export const content: ContentItem[] = [
       "10 freelancer prompts, client templates, a content plan, automation recipes, and your next-step checklist.",
     category: "Business",
     body: toolkitBody,
-    assetPath: "/downloads/navonixx-ai-business-toolkit.pdf",
+    assetPath: assetUrl("/downloads/navonixx-ai-business-toolkit.pdf"),
     emailCapture: true,
   },
   ...freelancerPrompts.map(([title, prompt], i) => ({
@@ -222,45 +224,76 @@ export const content: ContentItem[] = [
     category: "AI & productivity",
     body: "# Better prompts start with a better brief\n\nA vague request tends to produce a vague draft. Start with the audience, the task, relevant context, and what a useful answer should look like.\n\n## A reusable structure\nRole: what perspective should the assistant take?\nTask: what should it produce?\nContext: what facts are available?\nConstraints: what must it avoid or preserve?\nFormat: how should the result be structured?\nQuality check: what assumptions should it flag?\n\n## A practical example\nInstead of asking for a proposal, explain the client problem, deliverables, deadline, budget range, and desired tone. Ask for missing information to be listed rather than invented.\n\n## Review before use\nVerify claims, edit for your voice, and protect confidential data. AI can help organize and draft work, but you remain responsible for the final result.",
   },
+  ...contentLibrary,
 ];
 export const sectionInfo: Record<
   string,
-  { title: string; description: string; eyebrow: string }
+  {
+    title: string;
+    description: string;
+    eyebrow: string;
+    name: string;
+    seoTitle: string;
+    seoDescription: string;
+  }
 > = {
   faq: {
     title: "Useful questions. Clear answers.",
     description:
       "Answers to common questions about NavoNixx and our resources.",
     eyebrow: "HELPFUL ANSWERS",
+    name: "FAQ",
+    seoTitle: "FAQ",
+    seoDescription: "Answers to common questions about NavoNixx tools and resources.",
   },
   prompts: {
     title: "A better starting point for AI.",
     description:
-      "Useful prompts with clear context, thoughtful constraints, and room for your own ideas.",
+      "Copy-ready prompts with clear context and thoughtful constraints. Open any prompt straight in ChatGPT or Claude.",
     eyebrow: "THE PROMPT LIBRARY",
+    name: "Prompts",
+    seoTitle: "Free AI Prompts for Freelancers, Marketers & Small Businesses",
+    seoDescription:
+      "Copy-ready ChatGPT and Claude prompts for proposals, client emails, content, SEO, and sales. Free, no sign-up.",
   },
   templates: {
     title: "Skip the blank page.",
     description:
-      "Practical templates for proposals, content, and the work that happens every week.",
+      "Practical templates for proposals, outreach, onboarding, and the work that happens every week.",
     eyebrow: "READY TO MAKE YOUR OWN",
+    name: "Templates",
+    seoTitle: "Free Freelance Templates: Proposals, Cold Emails & Onboarding",
+    seoDescription:
+      "Free, editable templates for client proposals, cold outreach, payment reminders, onboarding, and content planning.",
   },
   workflows: {
     title: "Less busywork. More momentum.",
     description:
       "Step-by-step systems that make everyday work simpler, with human checks built in.",
     eyebrow: "WORK SMARTER, REPEATABLY",
+    name: "Workflows",
+    seoTitle: "AI Automation Workflows for Freelancers & Small Businesses",
+    seoDescription:
+      "Step-by-step AI and automation workflows for lead intake, content repurposing, invoicing, and more.",
   },
   resources: {
     title: "Good ideas. Useful resources.",
     description:
       "Explore our prompts, templates, workflows, and practical guides in one place.",
     eyebrow: "YOUR LEARNING LIBRARY",
+    name: "Resources",
+    seoTitle: "Free Resources: AI Prompts, Templates, Workflows & Guides",
+    seoDescription:
+      "Every NavoNixx prompt, template, workflow, and guide in one place. Free to use.",
   },
   blog: {
     title: "Build a smarter way to work.",
     description:
-      "Practical guides for independent people building ambitious things.",
+      "Practical guides and honest comparisons for independent people building ambitious things.",
     eyebrow: "THE NAVONIXX JOURNAL",
+    name: "Guides",
+    seoTitle: "Guides & AI Tool Comparisons for Freelancers",
+    seoDescription:
+      "Practical guides on pricing, AI tools, automation, and growing a freelance business, with honest tool comparisons.",
   },
 };

@@ -1,4 +1,4 @@
-﻿import { z } from "zod";
+import { z } from "zod";
 import { eventNames } from "./events";
 import { safeDestination, approvedAsset } from "./security";
 export const emailSchema = z.string().trim().toLowerCase().email().max(254);
@@ -6,6 +6,16 @@ export const slugSchema = z
   .string()
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
   .max(100);
+export const offerLeadSchema = z
+  .object({
+    email: emailSchema,
+    marketing: z.boolean().default(false),
+    website: z.string().max(200).optional(),
+    offerSlug: slugSchema,
+    source: z.string().max(100).optional(),
+    campaign: z.string().max(100).optional(),
+  })
+  .strict();
 export const leadSchema = z
   .object({
     email: emailSchema,
@@ -89,7 +99,7 @@ export const assetUrl = z
   .string()
   .max(2000)
   .refine(approvedAsset, {
-    message: "Use a local download path or your configured Blob storage host.",
+      message: "Use a local download path or your configured ImageKit/Blob storage endpoint.",
   })
   .nullable()
   .optional();

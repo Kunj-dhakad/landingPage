@@ -1,4 +1,4 @@
-﻿import { chromium } from "@playwright/test";
+import { chromium } from "@playwright/test";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 const base = process.env.TEST_BASE_URL || "http://localhost:3000";

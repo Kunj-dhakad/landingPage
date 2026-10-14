@@ -14,6 +14,7 @@ export default async function Page({
     <>
       <PageHeading
         title="One small step. Useful updates."
+        crumb="Verify email"
         description="Confirm that you'd like to receive optional NavoNixx resources and updates. You can unsubscribe anytime."
       />
       <div className="container page-body">

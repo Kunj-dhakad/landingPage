@@ -6,6 +6,7 @@ import {
   createHmac,
 } from "node:crypto";
 import { db } from "./db";
+import { isImageKitAsset } from "./imagekit-config";
 export const hashToken = (token: string) =>
   createHash("sha256").update(token).digest("hex");
 export const token = () => randomBytes(32).toString("hex");
@@ -39,6 +40,7 @@ export function safeDestination(value: string) {
 }
 export function approvedAsset(value: string) {
   if (/^\/downloads\/[a-z0-9-]+\.pdf$/.test(value)) return true;
+  if (isImageKitAsset(value)) return true;
   try {
     const url = new URL(value);
     return (
@@ -53,6 +55,11 @@ export function approvedAsset(value: string) {
 }
 export function sameOrigin(request: Request) {
   const origin = request.headers.get("origin");
+  if (process.env.NODE_ENV === "development") {
+    const url = new URL(request.url);
+    const host = request.headers.get("host") || url.host;
+    return origin === `${url.protocol}//${host}`;
+  }
   const expected = process.env.NEXT_PUBLIC_SITE_URL
     ? new URL(process.env.NEXT_PUBLIC_SITE_URL).origin
     : new URL(request.url).origin;

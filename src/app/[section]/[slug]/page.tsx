@@ -29,11 +29,19 @@ export default async function Page({ params }: Props) {
         title={item.title}
         description={item.description}
         eyebrow={item.category.toUpperCase()}
-        parent={[section, `/${section}`]}
+        parent={[sectionInfo[section].name, `/${section}`]}
       />
       <div className="container page-body article-layout">
         <div>
-          <ContentActions body={item.body} slug={slug} />
+          <ContentActions
+            body={item.body}
+            slug={slug}
+            prompt={
+              section === "prompts"
+                ? item.body.split("\n\n")[1]?.trim()
+                : undefined
+            }
+          />
           {item.assetPath && (
             <a
               className="button primary small"
@@ -52,16 +60,28 @@ export default async function Page({ params }: Props) {
             </ReactMarkdown>
           </article>
         </div>
-        <aside className="article-sidebar panel">
+        <aside className="article-sidebar-stack">
+          <div className="article-sidebar panel finder-side">
+            <span className="eyebrow">60-SECOND QUIZ</span>
+            <h3>Which AI tools fit your work?</h3>
+            <p>
+              Three questions. A short, honest shortlist with free plans first.
+            </p>
+            <Link href="/ai-tools/finder" className="button primary small">
+              Find my AI stack ↗
+            </Link>
+          </div>
+          <div className="article-sidebar panel">
           <span className="eyebrow">KEEP BUILDING</span>
           <h3>Your free AI toolkit.</h3>
           <p>
             Prompts, proposals, content plans, and workflows in one practical
             PDF.
           </p>
-          <Link href="/toolkit" className="button primary small">
+          <Link href="/toolkit" className="button secondary small">
             Get the toolkit ↗
           </Link>
+          </div>
         </aside>
       </div>
     </>

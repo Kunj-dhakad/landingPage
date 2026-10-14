@@ -1,0 +1,65 @@
+/* Compact illustrated introductions leave room for the actual task. */
+.public-site .page-hero { padding: 14px 0 18px; }
+.public-site .breadcrumb { margin-bottom: 10px; font-size: 11px; line-height: 1.5; }
+.page-heading-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 18px 24px;
+  border-radius: 18px;
+  background: #06112a;
+  border: 1px solid #1b3760;
+  box-shadow: 0 8px 24px #06112a12;
+}
+.page-heading-art { position: absolute; right: 0; top: 0; width: 480px; height: 100%; object-fit: cover; object-position: right center; z-index: -1; opacity: .9; }
+.page-heading-banner::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, #06112a 0%, #06112af2 48%, #06112a00 78%); }
+.page-heading-copy { max-width: 76%; }
+.public-site .page-heading-banner .eyebrow { font-size: 10px; color: #82b5ff; letter-spacing: 1px; }
+.public-site .page-heading-banner h1 { color: #f5f8ff; font-size: clamp(25px, 2.4vw, 34px); letter-spacing: -.035em; line-height: 1.15; margin: 5px 0 7px; text-wrap: initial; }
+.public-site .page-heading-banner p { color: #bdcde7; font-size: 14px; line-height: 1.5; letter-spacing: 0; max-width: 760px; margin: 0; }
+.public-site .tool-page-hero .page-heading-banner { padding: 12px 20px; }
+.public-site .tool-page-hero .page-heading-banner h1 { font-size: clamp(24px, 2.1vw, 30px); }
+.public-site .tool-page-hero .page-heading-banner p { font-size: 13px; }
+.public-site .directory-controls { margin-bottom: 12px; }
+.public-site .result-count { margin: 10px 0 16px; }
+.public-site .page-body:not(.tool-page-body) > .tool-grid > .tool-card { padding: 22px; }
+.public-site .page-body:not(.tool-page-body) > .tool-grid > .tool-card .card-top { margin-bottom: 14px; }
+.public-site .page-body:not(.tool-page-body) > .tool-grid > .tool-card > p { margin: 10px 0 16px; }
+.public-site .tool-page-body :is(.input-pane, .result-pane) { padding: 20px; }
+.public-site .tool-page-body .pane-title { margin-bottom: 14px; gap: 10px; }
+.public-site .tool-page-body .pane-title h2 { font-size: 20px; }
+.public-site .tool-page-body .pane-title > .micro { font-size: 10px; }
+.public-site .tool-page-body .field { margin-bottom: 12px; font-size: 13px; }
+.public-site .tool-page-body .field :is(input, textarea) { padding: 10px 12px; font-size: 15px; }
+.public-site .tool-page-body .tool-actions { gap: 10px; margin-top: 12px; }
+.tool-fields { min-width: 0; }
+@media (min-width: 801px) {
+  .public-site .tool-page-body .tool-workspace { height: max(320px, calc(100svh - 268px)); max-height: 640px; }
+  .public-site .tool-page-body .input-pane { display: flex; flex-direction: column; min-height: 0; }
+  .public-site .tool-page-body .input-pane form { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .public-site .tool-page-body .tool-fields { flex: 1; overflow-y: auto; min-height: 0; padding-right: 6px; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+  .public-site .tool-page-body .tool-actions { flex-shrink: 0; }
+  .public-site .tool-page-body .result-content { min-height: 0; overflow: auto; padding-right: 6px; scrollbar-width: thin; }
+  .public-site .tool-page-body .result-placeholder { min-height: 0; height: 100%; }
+}
+@media (max-width: 800px) {
+  .public-site .page-heading-banner { padding: 16px 18px; }
+  .page-heading-copy { max-width: 88%; }
+  .page-heading-art { width: 300px; opacity: .55; }
+  .page-heading-banner::after { background: linear-gradient(90deg, #06112a 0%, #06112ae6 60%, #06112a55); }
+}
+@media (max-width: 600px) {
+  .public-site .page-hero { padding: 10px 0 14px; }
+  .public-site .page-heading-banner { border-radius: 14px; padding: 14px 16px; }
+  .page-heading-copy { max-width: 100%; }
+  .public-site .page-heading-banner h1 { font-size: 26px; }
+  .public-site .page-heading-banner p { font-size: 13px; }
+  .public-site .tool-page-body :is(.input-pane, .result-pane) { padding: 18px; }
+}
+@media print {
+  .page-heading-art, .page-heading-banner::after { display: none; }
+  .page-heading-banner { background: white; box-shadow: none; border-color: #ddd; }
+  .public-site .page-heading-banner :is(h1, p, .eyebrow) { color: black; }
+  .public-site .tool-page-body .tool-workspace { height: auto; max-height: none; }
+  .public-site .tool-page-body :is(.tool-fields, .result-content) { overflow: visible; }
+}

@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import { assetUrl } from "@/lib/media-assets";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
@@ -8,7 +10,6 @@ import {
   Moon,
   Menu,
   X,
-  Zap,
   ShieldCheck,
 } from "lucide-react";
 import { track } from "@/lib/events";
@@ -17,7 +18,7 @@ export function Brand({ name = "navonixx" }: { name?: string }) {
   return (
     <Link href="/" className="brand" aria-label="NavoNixx home">
       <span className="brand-mark">
-        <Zap size={21} fill="currentColor" />
+        <Image src={assetUrl("/images/navonixx-logo.png")} alt="" width={48} height={48} sizes="48px" priority />
       </span>
       {name.toLowerCase()}
       <span className="brand-dot">.</span>
@@ -27,17 +28,17 @@ export function Brand({ name = "navonixx" }: { name?: string }) {
 const links = [
   ["Free Tools", "/free-tools"],
   ["AI Tools", "/ai-tools"],
+  ["Reviews", "/reviews"],
   ["Prompts", "/prompts"],
   ["Templates", "/templates"],
-  ["Workflows", "/workflows"],
-  ["Resources", "/resources"],
+  ["Guides", "/blog"],
 ];
 export function Header({ brandName }: { brandName?: string }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   useEffect(() => {
-    const d = readPreference("navonixx-theme") === "dark";
+    const d = readPreference("navonixx-theme") !== "light";
     setDark(d);
     document.documentElement.dataset.theme = d ? "dark" : "light";
   }, []);
@@ -62,8 +63,10 @@ export function Header({ brandName }: { brandName?: string }) {
         </nav>
         <div className="nav-actions">
           <button
+            type="button"
             className="icon-button theme-button"
             aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+            aria-pressed={dark}
             onClick={() => {
               setDark(!dark);
               document.documentElement.dataset.theme = !dark ? "dark" : "light";
@@ -74,12 +77,12 @@ export function Header({ brandName }: { brandName?: string }) {
           </button>
           <Link
             className="button primary small"
-            href="/toolkit"
-            aria-label="Get Free Toolkit"
+            href="/ai-tools/finder"
+            aria-label="Find my AI tools"
           >
-            <span className="cta-long">Get Free Toolkit</span>
+            <span className="cta-long">Find my AI tools</span>
             <span className="cta-short" aria-hidden="true">
-              Toolkit
+              Finder
             </span>{" "}
             <ArrowUpRight size={16} />
           </Link>
@@ -128,8 +131,8 @@ export function Footer({
               <span>A lot more possibility.</span>
             </h2>
           </div>
-          <Link href="/free-tools" className="button primary">
-            Find your next tool <ArrowUpRight size={18} />
+          <Link href="/ai-tools/finder" className="button primary">
+            Take the 60-second Tool Finder <ArrowUpRight size={18} />
           </Link>
         </div>
         <div className="footer-grid">
@@ -158,8 +161,10 @@ export function Footer({
           </div>
           <div>
             <h4>Learn & build</h4>
+            <Link href="/ai-tools/finder">AI Tool Finder</Link>
+            <Link href="/ai-tools/compare">Compare AI tools</Link>
             <Link href="/workflows">Workflows</Link>
-            <Link href="/blog">Journal</Link>
+            <Link href="/blog">Guides</Link>
             <Link href="/toolkit">Free AI toolkit</Link>
             <Link href="/resources">All resources</Link>
           </div>
@@ -240,11 +245,10 @@ export function PrivacyControls() {
     <aside className="consent-panel" aria-label="Analytics privacy choices">
       <ShieldCheck size={23} />
       <div>
-        <strong>Your work stays yours.</strong>
         <p>
-          Our tools run locally. Optional analytics help us understand page
-          visits and tool usage. We never track your inputs.{" "}
-          <Link href="/privacy">Read our policy</Link>.
+          <strong>Your work stays yours.</strong> Tools run in your browser.
+          Optional analytics count visits, never your inputs.{" "}
+          <Link href="/privacy">Policy</Link>
         </p>
         <div className="consent-actions">
           <button

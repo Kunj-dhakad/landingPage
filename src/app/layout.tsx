@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+import { assetUrl } from "@/lib/media-assets";
+import type { Metadata } from "next";
 import { Header, Footer, PrivacyControls } from "@/components/shell";
 import { SiteFrame } from "@/components/site-frame";
 import "@fontsource/geist/400.css";
@@ -9,6 +10,10 @@ import "@fontsource/geist/800.css";
 import { ScrollReveals } from "@/components/scroll-reveals";
 import { getSettings } from "@/lib/catalog";
 import "./globals.css";
+import "./design-system.css";
+import "./compact-pages.css";
+import "./funnel.css";
+import "./tool-runner.css";
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://navonixx.vercel.app",
@@ -26,7 +31,7 @@ export const metadata: Metadata = {
     description: "Free tools and useful resources for your next big idea.",
   },
   twitter: { card: "summary_large_image" },
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: assetUrl("/images/navonixx-logo.png"), apple: assetUrl("/images/navonixx-logo.png") },
 };
 export default async function RootLayout({
   children,
@@ -35,7 +40,7 @@ export default async function RootLayout({
 }) {
   const settings = await getSettings();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <body>
         <a className="skip-link" href="#main">
           Skip to content

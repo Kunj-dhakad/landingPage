@@ -6,9 +6,13 @@ import { PageHeading } from "@/components/page-heading";
 import { getContent } from "@/lib/catalog";
 import { sectionInfo } from "@/lib/content";
 import { ContactForm } from "@/components/forms";
-const legal: Record<string, { title: string; paragraphs: string[] }> = {
+const legal: Record<
+  string,
+  { title: string; crumb: string; paragraphs: string[] }
+> = {
   about: {
     title: "Better tools for meaningful work.",
+    crumb: "About",
     paragraphs: [
       "NavoNixx is a practical workspace for freelancers, creators, solopreneurs, and growing businesses. Our aim is simple: make useful tools accessible and everyday work easier.",
       "Our browser utilities are free and work without an account. We share prompts, templates, and workflows that you can adapt to your own process.",
@@ -17,15 +21,17 @@ const legal: Record<string, { title: string; paragraphs: string[] }> = {
   },
   terms: {
     title: "Terms of use",
+    crumb: "Terms",
     paragraphs: [
       "Use NavoNixx responsibly and only with content you have permission to process. Do not attempt unauthorized access, automated abuse, or attacks against our services.",
       "Tools and educational resources are provided as general utilities. Review outputs before use. Calculators are planning aids and do not replace qualified financial, tax, or legal advice.",
       "Third-party services have their own terms, privacy practices, availability, and pricing. Verify these directly before purchasing. Our affiliate disclosure explains how recommendations may be monetized.",
-      "To request assistance or discuss your data, use our contact form. These terms must be reviewed for the operator’s jurisdiction before a public production launch.",
+      "To request assistance or discuss your data, use our contact form.",
     ],
   },
   "affiliate-disclosure": {
     title: "Clear recommendations. Transparent relationships.",
+    crumb: "Affiliate disclosure",
     paragraphs: [
       "NavoNixx may earn a commission when you purchase through a clearly marked affiliate link, at no additional cost to you.",
       "Affiliate listings are labeled. We do not invent user ratings, testimonials, pricing, or guarantees. Check the official provider website for current features, prices, usage limits, and refund terms.",
@@ -38,8 +44,10 @@ export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ section: string }> };
 export async function generateMetadata({ params }: Props) {
   const { section } = await params;
+  const info = sectionInfo[section];
   return {
-    title: sectionInfo[section]?.title || legal[section]?.title || "Contact",
+    title: info?.seoTitle || legal[section]?.crumb || "Contact NavoNixx",
+    description: info?.seoDescription || legal[section]?.title,
     alternates: { canonical: `/${section}` },
   };
 }
@@ -52,6 +60,7 @@ export default async function Page({ params }: Props) {
           title="Let's make useful things happen."
           description="A question, a tool idea, or feedback? We'd love to hear from you."
           eyebrow="GET IN TOUCH"
+          crumb="Contact"
         />
         <div className="container page-body">
           <ContactForm />
@@ -65,6 +74,7 @@ export default async function Page({ params }: Props) {
           title={legal[section].title}
           description="Smarter Tools. Better Work. Bigger Growth."
           eyebrow="NAVONIXX"
+          crumb={legal[section].crumb}
         />
         <div className="container page-body prose" style={{ maxWidth: 850 }}>
           {legal[section].paragraphs.map((p) => (
@@ -79,7 +89,12 @@ export default async function Page({ params }: Props) {
   const items = await getContent(section === "resources" ? undefined : section);
   return (
     <>
-      <PageHeading {...info} />
+      <PageHeading
+        title={info.title}
+        description={info.description}
+        eyebrow={info.eyebrow}
+        crumb={info.name}
+      />
       <div className="container page-body">
         <div className="resource-grid">
           {items.map((item, i) => (

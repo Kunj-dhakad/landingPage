@@ -132,7 +132,8 @@ test("random utilities use bounded cryptographic outputs", () => {
   assert.equal(runTool("password-generator", { length: "24" }).length, 24);
   const uuids = runTool("uuid-generator", { count: "10" }).split("\n");
   assert.equal(new Set(uuids).size, 10);
-  for (const uuid of uuids) assert.match(uuid, /^[a-f0-9-]{14}4[a-f0-9-]+$/);
+  for (const uuid of uuids)
+    assert.match(uuid, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
 });
 test("campaign URLs preserve query parameters and prohibit executable schemes", () => {
   const s = runTool("utm-link-builder", {

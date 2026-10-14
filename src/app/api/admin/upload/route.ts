@@ -4,16 +4,18 @@ import { requireAdmin } from "@/lib/auth";
 import { guard, apiError } from "@/lib/api";
 import { approvedAsset } from "@/lib/security";
 import { db } from "@/lib/db";
+import { uploadToImageKit, ImageKitUploadError } from "@/lib/imagekit";
 export async function POST(request: Request) {
   try {
     const admin = await requireAdmin();
     const blocked = await guard(request, "upload", 10);
     if (blocked) return blocked;
-    if (!process.env.BLOB_READ_WRITE_TOKEN || !process.env.BLOB_PUBLIC_HOST)
+    const useImageKit = Boolean(process.env.IMAGEKIT_URL_ENDPOINT || process.env.IMAGEKIT_PRIVATE_KEY);
+    if (!useImageKit && (!process.env.BLOB_READ_WRITE_TOKEN || !process.env.BLOB_PUBLIC_HOST))
       return NextResponse.json(
         {
           error:
-            "Persistent uploads need Vercel Blob configuration. Add BLOB_READ_WRITE_TOKEN and BLOB_PUBLIC_HOST.",
+            "Configure IMAGEKIT_PRIVATE_KEY and IMAGEKIT_URL_ENDPOINT to enable uploads.",
         },
         { status: 503 },
       );
@@ -57,8 +59,9 @@ export async function POST(request: Request) {
       "image/jpeg": "jpg",
       "image/webp": "webp",
     }[file.type]!;
-    const result = await put(
-      `resources/${crypto.randomUUID()}.${extension}`,
+    const fileName = `${crypto.randomUUID()}.${extension}`;
+    const result = useImageKit ? await uploadToImageKit(file, fileName) : await put(
+      `resources/${fileName}`,
       bytes,
       {
         access: "public",
@@ -80,6 +83,7 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({ url: result.url, type: file.type });
   } catch (e) {
+    if (e instanceof ImageKitUploadError) return NextResponse.json({ error: e.message }, { status: e.status });
     return apiError(e);
   }
 }

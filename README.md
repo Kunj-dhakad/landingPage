@@ -28,12 +28,12 @@ Set `ADMIN_EMAIL` and a strong `ADMIN_PASSWORD` before seeding, then sign in at 
 - Auth.js/NextAuth stable credentials authentication, scrypt password hashes, encrypted HTTP-only session cookies, revocable PostgreSQL sessions, server-side role checks, CSRF/origin protection, database-backed rate limits, and audit logs.
 - Consented first-party visitor/session events, batched sanitized ingestion, ID deduplication, coarse devices/country, UTM attribution/referrer domain, estimated durations, outbound clicks, resource download counts, and configurable retention.
 - Real database admin overview/charts, visitors, lead search/filter/pagination/export/deletion, content Markdown CRUD/preview, free-tool metadata, affiliate CRUD, campaigns, email activity, contacts, settings, administrators, and audit history.
-- Optional persistent PDF/image uploads using Vercel Blob, with size limits, MIME/signature checks, authenticated access, and an approved asset host.
+- Persistent PDF/image uploads using ImageKit (with optional Vercel Blob support), size limits, MIME/signature checks, authenticated access, and an approved asset endpoint.
 - Shared design tokens, Geist fonts hosted locally, responsive navigation, light/dark modes, keyboard focus, reduced-motion support, page/error/loading states, canonical metadata, social preview image, sitemap, robots, and structured data.
 
 ## Verify
 
-See [the verification record](docs/VALIDATION.md) for completed checks, screenshots, and external setup limits.
+Run the checks below. Local QA notes, screenshots, and agent artifacts are ignored by Git; deployment excludes documentation, tests, and development scripts.
 
 ```bash
 npm run typecheck

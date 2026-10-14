@@ -1,0 +1,18 @@
+# Ship application source and configuration, not local development artifacts.
+docs/**
+tests/**
+scripts/**
+AGENTS.md
+.agents/**
+.codex/**
+.runtime/**
+.npm-cache/**
+node_modules/**
+.next/**
+coverage/**
+playwright-report/**
+test-results/**
+.vercel/**
+.env*
+*.tsbuildinfo
+*.log

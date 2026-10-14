@@ -6,20 +6,20 @@
   --text: #0c1b36;
   --muted: #65728b;
   --line: #e5eaf3;
-  --blue: #2563eb;
+  --blue: #0066ff;
   --nav: #fbfcfedb;
   --shadow: 0 8px 30px #1c305c0c;
   --radius: 20px;
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --bg: #091329;
-  --surface: #101f39;
-  --tint: #0d1930;
-  --text: #e9f0ff;
+  --bg: #030611;
+  --surface: #0b1226;
+  --tint: #070d1d;
+  --text: #f5f8ff;
   --muted: #a4b1cb;
-  --line: #253752;
-  --nav: #091329e6;
+  --line: #1a2a4b;
+  --nav: #030611eb;
   --shadow: 0 8px 30px #0002;
   color-scheme: dark;
 }
@@ -27,7 +27,7 @@
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-padding-top: 100px;
 }
 body {
@@ -271,7 +271,7 @@ svg {
   margin: 25px 0;
 }
 .gradient-text {
-  background: linear-gradient(110deg, #2563eb 15%, #5179ed 55%, #9777e8);
+  background: linear-gradient(110deg, #0066ff 15%, #168bff 55%, #00cfff);
   background-clip: text;
   color: transparent;
 }
@@ -444,9 +444,6 @@ svg {
   border-radius: 13px;
   box-shadow: 0 12px 38px #3d548b16;
   transition: transform 0.3s;
-}
-.float-card:hover {
-  transform: translateY(-5px) rotate(0);
 }
 .float-card strong {
   display: block;
@@ -649,7 +646,7 @@ h2 {
 }
 .category-card:hover,
 .tool-card:hover {
-  transform: translateY(-4px);
+  transform: none;
   border-color: #adbef0;
 }
 .category-card strong {
@@ -1761,9 +1758,6 @@ details p {
   }
   .brand {
     font-size: 23px;
-  }
-  .theme-button {
-    display: none;
   }
   .hero h1 {
     font-size: 59px;
@@ -3013,7 +3007,7 @@ body {
   --text: #1d1d1f;
   --muted: #6e6e73;
   --line: #e5e5e9;
-  --blue: #0071e3;
+  --blue: #0066ff;
   --nav: #ffffffdc;
   --shadow: 0 8px 32px #1d1d1f08;
 }
@@ -3598,4 +3592,118 @@ body {
     padding: 12px;
     font-size: 12px;
   }
+}
+
+/* Original NavoNixx logo and its electric-blue / midnight palette. */
+.brand-mark {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #000;
+  margin-right: 10px;
+  transform: none;
+  box-shadow: 0 0 18px #0066ff26;
+}
+.brand-mark img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.mini-logo img, .admin-workspace-brand img { display: block; border-radius: 50%; }
+.public-site .primary { background: linear-gradient(120deg, #0055e6, #0075ff); box-shadow: 0 5px 22px #0066ff30; }
+.public-site .orb-one { background: #0066ff30; }
+.public-site .orb-two { background: #00cfff1c; }
+.public-site .float-spark { color: #00bfff; }
+:root[data-theme="dark"] .public-site .hero { background: radial-gradient(ellipse at 80% 40%, #0066ff14, transparent 65%), linear-gradient(180deg, var(--bg), var(--tint)); }
+:root[data-theme="dark"] .toolkit-banner { background: linear-gradient(110deg, #091b3c, #071128); border-color: var(--line); }
+:root[data-theme="dark"] .public-site .workspace-preview { box-shadow: 12px 14px 0 -8px #0066ff18, 25px 35px 65px #0006; }
+:root[data-theme="dark"] .public-site .tool-card { border-color: var(--line); }
+@media (max-width: 600px) {
+  .brand-mark { width: 38px; height: 38px; flex-basis: 38px; margin-right: 8px; }
+}
+
+/* Keep the theme control reachable when navigation switches to a menu. */
+@media (min-width: 801px) and (max-width: 1100px) {
+  .public-site .main-nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--line);
+  }
+  .public-site .main-nav.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 17px;
+  }
+  .public-site .menu-toggle { display: grid; }
+}
+
+/* Compact page introductions and restrained soft-surface depth. */
+.public-site {
+  --soft-raised: 7px 7px 20px #1427470b, -5px -5px 16px #ffffffb3;
+  --soft-inset: inset 3px 3px 8px #1427470a, inset -3px -3px 8px #ffffffb3;
+  --soft-hover: 0 14px 30px #14274712, inset 0 1px 0 #ffffffb3;
+  --soft-fill: linear-gradient(145deg, #ffffff, #f7f9fc);
+}
+:root[data-theme="dark"] .public-site {
+  --soft-raised: 7px 7px 20px #0005, -4px -4px 14px #20345a18;
+  --soft-inset: inset 3px 3px 8px #0004, inset -3px -3px 8px #20345a18;
+  --soft-hover: 0 14px 32px #0006, inset 0 1px 0 #729bff18;
+  --soft-fill: linear-gradient(145deg, #0e1830, #091122);
+}
+.public-site .page-hero { padding: 24px 0 30px; }
+.public-site .breadcrumb { margin-bottom: 20px; font-size: 12px; flex-wrap: wrap; }
+.public-site .page-hero h1 { font-size: clamp(34px, 4vw, 50px); line-height: 1.12; }
+.public-site .page-hero p { margin-top: 16px; font-size: 16px; }
+.public-site :is(.tool-card, .category-card, .resource-card, .workflow-card, .panel, .tool-workspace) {
+  background: var(--soft-fill);
+  box-shadow: var(--soft-raised);
+  border: 1px solid var(--line);
+  transition: transform 240ms cubic-bezier(.2,.7,.2,1), box-shadow 240ms ease, border-color 240ms ease;
+}
+.public-site :is(.search, .filter-tabs, .email-input) {
+  box-shadow: var(--soft-inset);
+  transition: box-shadow 220ms ease, border-color 220ms ease;
+}
+.public-site :is(.search, .email-input):focus-within {
+  border-color: var(--blue);
+  box-shadow: var(--soft-inset), 0 0 0 3px #0066ff14;
+}
+.public-site :is(.button, .icon-button, .filter-tabs button) {
+  transition: transform 180ms cubic-bezier(.2,.7,.2,1), box-shadow 220ms ease, background-color 220ms ease, color 220ms ease;
+}
+.public-site .button.secondary, .public-site .icon-button { box-shadow: var(--soft-raised); }
+.public-site .theme-button { background: var(--surface); border: 1px solid var(--line); border-radius: 50%; }
+.public-site .filter-tabs button.active { box-shadow: var(--soft-raised); }
+.public-site .button svg, .public-site .text-link svg, .public-site .card-bottom svg {
+  transition: transform 220ms cubic-bezier(.2,.7,.2,1);
+}
+.public-site :is(.button, .icon-button, .filter-tabs button):active:not(:disabled) { transform: translateY(1px) scale(.98); }
+.public-site .button.secondary:active { box-shadow: var(--soft-inset); }
+.public-site .button:disabled { transform: none; }
+.public-site .main-nav a { transition: color 180ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  .public-site :is(.tool-card, .category-card, .resource-card, .workflow-card):hover {
+    transform: none;
+    box-shadow: var(--soft-hover);
+    border-color: color-mix(in srgb, var(--blue) 35%, var(--line));
+  }
+  .public-site .button:hover:not(:disabled) { transform: translateY(-2px); }
+  .public-site .primary:hover:not(:disabled) { box-shadow: 0 8px 24px #0066ff40; }
+  .public-site :is(.icon-button, .filter-tabs button):hover:not(:disabled) { color: var(--blue); transform: translateY(-1px); }
+  .public-site .button:hover svg, .public-site .text-link:hover svg, .public-site .tool-card:hover .card-bottom svg { transform: translateX(3px); }
+}
+@media (max-width: 600px) {
+  .public-site .page-hero { padding: 18px 0 24px; }
+  .public-site .breadcrumb { margin-bottom: 16px; font-size: 11px; }
+  .public-site .page-hero h1 { letter-spacing: -1.5px; }
+  .public-site .page-hero p { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .public-site :is(.button, .icon-button, .filter-tabs button, .tool-card, .category-card, .resource-card, .workflow-card),
+  .public-site :is(.button, .text-link, .card-bottom) svg { transform: none !important; }
 }

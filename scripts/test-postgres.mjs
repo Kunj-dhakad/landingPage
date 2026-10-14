@@ -1,4 +1,4 @@
-﻿import EmbeddedPostgres from "embedded-postgres";
+import EmbeddedPostgres from "embedded-postgres";
 import { randomBytes } from "node:crypto";
 import { spawn } from "node:child_process";
 import path from "node:path";

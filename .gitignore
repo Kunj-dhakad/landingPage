@@ -15,3 +15,20 @@ docs/source/
 coverage/
 .env.test.local
 src/generated/
+
+# Local agent instructions, notes and QA output (not application source).
+/AGENTS.md
+/.agents/
+/.codex/
+/docs/screenshots/
+/docs/RESEARCH.md
+/docs/MEDIA.md
+/docs/VALIDATION.md
+/docs/DESIGN-VALIDATION.md
+/docs/*audit*.json
+/docs/*verification*.json
+/scripts/design-audit.mjs
+/scripts/finish-imagekit-migration.mjs
+/scripts/check-admin-login.mjs
+/scripts/check-public-ui.mjs
+*.log

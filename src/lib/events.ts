@@ -1,3 +1,4 @@
+import { createUUID } from "./browser-utils";
 export const eventNames = [
   "page_view",
   "session_start",
@@ -15,6 +16,9 @@ export const eventNames = [
   "affiliate_tool_viewed",
   "affiliate_link_clicked",
   "comparison_created",
+  "finder_completed",
+  "offer_gate_opened",
+  "offer_lead_captured",
   "search_performed",
   "category_selected",
   "contact_form_submitted",
@@ -84,7 +88,7 @@ export function track(name: EventName, slug?: string, category?: string) {
     }
   }
   queue.push({
-    id: crypto.randomUUID(),
+    id: createUUID(),
     name,
     path: location.pathname,
     slug,

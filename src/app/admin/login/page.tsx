@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
+import { assetUrl } from "@/lib/media-assets";
 import { redirect } from "next/navigation";
 import {
   LockKeyhole,
   ShieldCheck,
-  Zap,
   Wrench,
   Layers,
   Sparkles,
@@ -24,7 +25,7 @@ export default async function Page() {
     <div className="admin-login-page">
       <aside className="admin-login-brand-panel">
         <Link href="/" className="admin-login-brand">
-          <Zap size={32} fill="currentColor" />
+          <Image src={assetUrl("/images/navonixx-logo.png")} alt="" width={48} height={48} />
           navonixx<span>.</span>
         </Link>
         <div className="admin-login-art" aria-hidden="true">
