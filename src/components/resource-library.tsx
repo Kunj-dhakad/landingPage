@@ -171,7 +171,7 @@ export function ResourceLibrary({
                 alt=""
                 width={768}
                 height={512}
-                sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1000px) 46vw, 380px"
+                sizes="(max-width: 600px) calc(100vw - 60px), (max-width: 900px) 46vw, (max-width: 1150px) 30vw, 280px"
                 priority={index < 3}
               />
               <span className="resource-kit-type">
