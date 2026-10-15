@@ -808,7 +808,7 @@ export function AdminOverview({ entity = "overview" }: { entity?: string }) {
       <div className="admin-tools">
         <label className="field">
           Date range
-          <Select aria-label="Date range" value={days} onValueChange={setDays} options={[{ value: "today", label: "Today (India time)" }, { value: "yesterday", label: "Yesterday (India time)" }, { value: "7", label: "Last 7 days" }, { value: "30", label: "Last 30 days" }, { value: "custom", label: "Custom range" }]} />
+          <Select aria-label="Date range" value={days} onValueChange={setDays} options={[{ value: "today", label: "Today (workspace time)" }, { value: "yesterday", label: "Yesterday (workspace time)" }, { value: "7", label: "Last 7 days" }, { value: "30", label: "Last 30 days" }, { value: "custom", label: "Custom range" }]} />
         </label>
         {days === "custom" && (
           <>

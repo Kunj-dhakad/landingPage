@@ -96,10 +96,10 @@ test("business calculations include costs and reject impossible denominators", (
     }),
   );
 });
-test("GST extraction reverses inclusive tax and invoices include line quantities", () => {
+test("Tax extraction reverses inclusive tax and invoices include line quantities", () => {
   assert.match(
     runTool("gst-calculator", { amount: "1180", rate: "18", mode: "extract" }),
-    /Base amount: 1,000\nGST: 180\nTotal: 1,180/,
+    /Base amount: 1,000\nTax: 180\nTotal: 1,180/,
   );
   const values = Object.fromEntries(
     tools

@@ -249,12 +249,12 @@ const entries: [string, string, string, string, Field[]][] = [
   ],
   [
     "gst-calculator",
-    "GST Calculator",
+    "VAT, GST & Sales Tax Calculator",
     "Business",
-    "Add or extract GST at a rate you choose.",
+    "Add or extract tax at a rate you choose for your transaction.",
     [
-      ...nums(["amount", "Amount", "1000"], ["rate", "GST rate (%)", "18"]),
-      { key: "mode", label: "GST is", value: "add", type: "select", options: ["add", "extract"] },
+      ...nums(["amount", "Amount", "1000"], ["rate", "Tax rate (%)", "10"]),
+      { key: "mode", label: "Tax is", value: "add", type: "select", options: ["add", "extract"] },
     ],
   ],
   [
@@ -612,7 +612,7 @@ export function runTool(slug: string, v: Record<string, string>): string {
       const amount = num("amount"),
         r = num("rate") / 100,
         base = v.mode === "extract" ? amount / (1 + r) : amount;
-      return `Base amount: ${f(base)}\nGST: ${f(base * r)}\nTotal: ${f(base * (1 + r))}\nVerify the applicable rate for your transaction.`;
+      return `Base amount: ${f(base)}\nTax: ${f(base * r)}\nTotal: ${f(base * (1 + r))}\nVerify the applicable rate for your transaction.`;
     }
     case "roi-calculator":
       return `ROI: ${f(((num("return") - num("investment", true)) / num("investment", true)) * 100)}%\nNet return: ${f(num("return") - num("investment"))}`;
@@ -623,7 +623,7 @@ export function runTool(slug: string, v: Record<string, string>): string {
     }
     case "invoice-generator": {
       if (!/^[A-Z]{3}$/.test(v.currency))
-        throw Error("Use a three-letter currency code, such as USD or INR.");
+        throw Error("Use a three-letter currency code, such as USD, GBP, or CAD.");
       const subtotal = num("quantity", true) * num("rate"),
         tax = (subtotal * num("tax")) / 100;
       return `INVOICE ${v.number}\nFrom: ${v.business}\nBill to: ${v.client}\n\n${v.item}\n${v.quantity} × ${f(num("rate"))} ${v.currency}\nSubtotal: ${f(subtotal)} ${v.currency}\nTax: ${f(tax)} ${v.currency}\nTOTAL: ${f(subtotal + tax)} ${v.currency}`;
