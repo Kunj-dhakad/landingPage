@@ -288,7 +288,21 @@
 .tr-list code {
   font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
 }
+.tr-result-body:has(> .tr-output) {
+  display: flex;
+  overflow: hidden;
+}
+.tr-output {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
 .tr-output pre {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
   margin: 0;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -713,5 +727,16 @@
   }
   .tr-invoice {
     border: 0;
+  }
+}
+
+@media print {
+  .tr-result-body:has(> .tr-output),
+  .tr-output {
+    display: block;
+    overflow: visible;
+  }
+  .tr-output pre {
+    overflow: visible;
   }
 }
