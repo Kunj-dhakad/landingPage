@@ -32,19 +32,24 @@
   font-size: 11px;
   font-weight: 600;
 }
-.tr-all-tools {
+.tr-back {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   flex: none;
-  color: var(--blue);
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--muted);
   font-size: 12px;
   font-weight: 600;
-  padding-block: 8px;
 }
-.tr-all-tools:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.tr-back:hover {
+  color: var(--blue);
+  background: var(--tint);
+  border-color: var(--blue);
 }
 
 /* Workspace */

@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
+  ArrowLeft,
   Search,
   Type,
   Code2,
@@ -552,15 +554,21 @@ function FieldInput({
 }
 
 export function ToolHeader({ tool }: { tool: Tool }) {
+  const router = useRouter();
   return (
     <header className="tr-header">
       <div className="tr-heading">
         <h1>{tool.name}</h1>
         <span className="tr-category">{tool.category}</span>
       </div>
-      <Link href="/free-tools" className="tr-all-tools">
-        All tools <ArrowUpRight size={15} />
-      </Link>
+      <button
+        type="button"
+        className="tr-back"
+        aria-label="Go back"
+        onClick={() => window.history.length > 1 ? router.back() : router.push("/free-tools")}
+      >
+        <ArrowLeft size={15} /> Back
+      </button>
     </header>
   );
 }
