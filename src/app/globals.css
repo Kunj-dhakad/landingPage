@@ -2516,17 +2516,6 @@ details p {
 body {
   font-family: "Geist", Arial, Helvetica, sans-serif;
 }
-[data-reveal="waiting"] {
-  opacity: 0;
-  transform: translateY(15px);
-}
-[data-reveal="visible"] {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 0.6s,
-    transform 0.6s;
-}
 .tool-icon img {
   width: 25px;
   height: 25px;
