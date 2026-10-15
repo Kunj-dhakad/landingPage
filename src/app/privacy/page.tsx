@@ -20,6 +20,15 @@ export default function Page() {
           results locally. We do not send these inputs to our server or include
           them in analytics. Text files are created on your device.
         </p>
+        <h2>Basic activity counts</h2>
+        <p>
+          We record page paths, button and link clicks, and tool interaction types
+          to understand which features are useful. Basic activity records do not
+          contain visitor or session identifiers, tracking cookies, raw IP addresses,
+          form values, or URL query parameters. They cannot tell us how many distinct
+          people visited. We respect Do Not Track, Global Privacy Control, and your
+          essential-only preference.
+        </p>
         <h2>Optional analytics</h2>
         <p>
           With your permission, we record page paths, tool names, interaction
@@ -37,7 +46,8 @@ export default function Page() {
         </p>
         <h2>Your choices</h2>
         <p>
-          Choose essential-only access to decline optional analytics. Use
+          Choose essential-only access to stop basic activity counts and decline
+          optional analytics. Use
           Privacy preferences in the footer to change your choice. Declining
           removes identification cookies and deletes the associated visitor
           record and sessions when the database is connected. Unidentified

@@ -11,6 +11,8 @@ export async function overview(from: Date, to: Date) {
     downloads,
     toolUsage,
     affiliateClicks,
+    buttonClicks,
+    linkClicks,
     traffic,
     sources,
     popular,
@@ -27,6 +29,8 @@ export async function overview(from: Date, to: Date) {
     db.resourceDownload.count({ where: { createdAt } }),
     db.analyticsEvent.count({ where: { name: "tool_completed", createdAt } }),
     db.affiliateClick.count({ where: { createdAt } }),
+    db.analyticsEvent.count({ where: { name: "button_clicked", createdAt } }),
+    db.analyticsEvent.count({ where: { name: "link_clicked", createdAt } }),
     db.$queryRaw<
       { day: string; visits: bigint }[]
     >`SELECT to_char("createdAt" AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Kolkata', 'YYYY-MM-DD') AS day, COUNT(*) AS visits FROM "AnalyticsEvent" WHERE name = 'page_view' AND "createdAt" >= (${from}::timestamptz AT TIME ZONE 'UTC') AND "createdAt" <= (${to}::timestamptz AT TIME ZONE 'UTC') GROUP BY day ORDER BY day`,
@@ -65,6 +69,8 @@ export async function overview(from: Date, to: Date) {
       },
       { label: "Consented sessions", value: sessions },
       { label: "Recorded page views", value: pageViews },
+      { label: "Button clicks", value: buttonClicks },
+      { label: "Link clicks", value: linkClicks },
       { label: "New leads", value: leads },
       { label: "Verified subscribers", value: verified },
       { label: "Toolkit / resource downloads", value: downloads },

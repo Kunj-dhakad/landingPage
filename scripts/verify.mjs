@@ -2,20 +2,41 @@ import { chromium } from "@playwright/test";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 const base = process.env.TEST_BASE_URL || "http://localhost:3000";
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || undefined });
 const context = await browser.newContext({
   viewport: { width: 1440, height: 1000 },
   reducedMotion: "reduce",
 });
 const page = await context.newPage();
 const errors = [];
+const analyticsRequests = [];
+page.on("request", request => {
+  if (new URL(request.url()).pathname === "/api/events" && request.method() === "POST") {
+    analyticsRequests.push(JSON.parse(request.postData() || "{}"));
+  }
+});
 page.on("pageerror", (e) => errors.push(e.message));
 try {
   const response = await page.goto(base, { waitUntil: "networkidle" });
   assert.equal(response.status(), 200);
   assert.equal(await page.locator("h1").count(), 1);
-  assert.match(await page.locator("h1").innerText(), /Work smarter/);
+  assert.match(await page.locator("h1").innerText(), /AI tools/);
+  assert.equal(await page.getByRole("complementary", { name: "Analytics privacy choices" }).count(), 0);
+  await page.locator("header .brand").first().click();
+  await page.getByRole("button", { name: "Privacy preferences" }).click();
+  await page.waitForTimeout(800);
+  assert.ok(analyticsRequests.some(body => body.events.some(event => event.name === "page_view")));
+  assert.ok(analyticsRequests.some(body => body.events.some(event => event.name === "button_clicked")));
+  assert.ok(analyticsRequests.some(body => body.events.some(event => event.name === "link_clicked")));
+  assert.ok(analyticsRequests.every(body => body.events.every(event =>
+    Object.keys(event).every(key => ["id", "name", "path", "slug", "category"].includes(key))
+  )));
+  assert.ok(analyticsRequests.every(body => body.attribution === undefined));
   await page.getByRole("button", { name: "Essential only" }).click();
+  await page.waitForFunction(() => localStorage.getItem("navonixx-consent") === "declined");
+  const recordedBeforeOptOut = analyticsRequests.length;
+  await page.waitForTimeout(800);
+  assert.equal(analyticsRequests.length, recordedBeforeOptOut);
   await fs.mkdir("docs/screenshots", { recursive: true });
   await page.screenshot({
     path: "docs/screenshots/navonixx-desktop.png",

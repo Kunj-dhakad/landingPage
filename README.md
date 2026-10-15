@@ -77,3 +77,7 @@ The implementation does not claim legal compliance, guaranteed Lighthouse scores
 ### ImageKit delivery on Vercel
 
 Published image URLs are stored in `src/config/media-assets.json`. The public delivery endpoint defaults to `https://ik.imagekit.io/0y2jm8mid`, so logo, previews and videos work even when `IMAGEKIT_URL_ENDPOINT` is absent on Vercel. No private key is needed to display them. For admin uploads, configure `IMAGEKIT_PRIVATE_KEY` and optionally override `IMAGEKIT_URL_ENDPOINT` for your account. Redeploy after changing image configuration or environment variables.
+
+### Activity analytics
+
+The analytics banner no longer opens automatically. Basic page views, button/link clicks and tool actions are recorded without visitor/session identifiers or tracking cookies. Inputs and query parameters are excluded. Visitors can disable activity recording through Privacy preferences in the footer; Do Not Track and Global Privacy Control are respected. Optional visitor/session attribution remains consent-based. Anonymous counts do not measure unique visitors.

@@ -1,6 +1,8 @@
 import { createUUID } from "./browser-utils";
 export const eventNames = [
   "page_view",
+  "link_clicked",
+  "button_clicked",
   "session_start",
   "tool_opened",
   "tool_used",
@@ -45,34 +47,40 @@ export function consentAccepted() {
     return false;
   }
 }
+export function analyticsAllowed() {
+  if (typeof window === "undefined") return false;
+  if (navigator.doNotTrack === "1" || (navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl) return false;
+  try { return localStorage.getItem("navonixx-consent") !== "declined"; }
+  catch { return false; }
+}
 export function campaignContext() {
-  return consentAccepted()
+  return analyticsAllowed() && consentAccepted()
     ? { source: attribution?.source, campaign: attribution?.campaign }
     : {};
 }
 function flush() {
   clearTimeout(timer);
   timer = undefined;
-  if (!consentAccepted()) {
+  if (!analyticsAllowed()) {
     queue = [];
     return;
   }
   const events = queue.splice(0, 20);
   if (!events.length) return;
   sending = sending.then(async () => {
-    if (!consentAccepted()) return;
+    if (!analyticsAllowed()) return;
     await fetch("/api/events", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ events, attribution }),
+      body: JSON.stringify({ events, ...(consentAccepted() ? { attribution } : {}) }),
       keepalive: true,
     }).catch(() => {});
   });
   if (queue.length) timer = setTimeout(flush, 600);
 }
 export function track(name: EventName, slug?: string, category?: string) {
-  if (!consentAccepted() || location.pathname.startsWith("/admin")) return;
-  if (!attribution) {
+  if (!analyticsAllowed() || location.pathname.startsWith("/admin")) return;
+  if (consentAccepted() && !attribution) {
     attribution = {};
     const params = new URLSearchParams(location.search);
     for (const key of ["source", "medium", "campaign", "content", "term"]) {

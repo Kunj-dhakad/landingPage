@@ -9,13 +9,23 @@ export async function POST(request: Request) {
     if (blocked) return blocked;
     const jar = await cookies();
     if (
-      jar.get("navonixx_analytics")?.value !== "accepted" ||
+      jar.get("navonixx_analytics")?.value === "declined" ||
+      request.headers.get("dnt") === "1" ||
+      request.headers.get("sec-gpc") === "1" ||
       /bot|crawler|spider|headless/i.test(
         request.headers.get("user-agent") || "",
       )
     )
       return new NextResponse(null, { status: 204 });
     const data = eventsSchema.parse(await readJson(request));
+    const publicEvents = data.events.filter(event => !event.path.startsWith("/admin"));
+    if (!publicEvents.length) return new NextResponse(null, { status: 204 });
+    data.events = publicEvents;
+    if (jar.get("navonixx_analytics")?.value !== "accepted") {
+      // No visitor/session identifiers, attribution, device details, or cookies.
+      await db.analyticsEvent.createMany({ data: publicEvents, skipDuplicates: true });
+      return NextResponse.json({ ok: true });
+    }
     let sessionId = jar.get("navonixx_visit")?.value;
     let session = sessionId
       ? await db.visitSession.findUnique({ where: { id: sessionId } })

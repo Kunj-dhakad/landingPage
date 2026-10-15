@@ -65,14 +65,17 @@ test("lead capture persists normalized unique email and never silently subscribe
   assert.ok(leads[0].consents.every((c) => !c.granted));
   assert.ok(leads[0].deliveries.every((d) => d.status === "NOT_CONFIGURED"));
 });
-test("analytics require consent, reject private metadata, and deduplicate event IDs", async () => {
+test("analytics keep anonymous events separate, reject private metadata, and deduplicate event IDs", async () => {
   const event = {
     id: crypto.randomUUID(),
     name: "tool_completed",
     path: "/free-tools/word-counter",
     slug: "word-counter",
   };
-  assert.equal((await post("/api/events", { events: [event] })).status, 204);
+  const anonymous = await post("/api/events", { events: [event] });
+  assert.equal(anonymous.status, 200);
+  assert.equal(anonymous.headers.getSetCookie().length, 0);
+  assert.equal((await db.analyticsEvent.findUniqueOrThrow({ where: { id: event.id } })).sessionId, null);
   const consent = await post("/api/consent", { accept: true });
   const cookies = consent.headers
     .getSetCookie()
@@ -99,6 +102,32 @@ test("analytics require consent, reject private metadata, and deduplicate event 
   assert.equal(await db.analyticsEvent.count({ where: { id: event.id } }), 1);
   assert.ok(await db.visitSession.count());
 });
+
+test("anonymous click counts honor declined cookies, DNT, GPC, and private page exclusions", async () => {
+  for (const extra of [
+    { Cookie: "navonixx_analytics=declined" },
+    { DNT: "1" },
+    { "Sec-GPC": "1" },
+  ] as Record<string, string>[]) {
+    const id = crypto.randomUUID();
+    const response = await fetch(base + "/api/events", {
+      method: "POST",
+      headers: { Origin: base, "Content-Type": "application/json", ...extra },
+      body: JSON.stringify({ events: [{ id, name: "button_clicked", path: "/free-tools" }] }),
+    });
+    assert.equal(response.status, 204);
+    assert.equal(await db.analyticsEvent.count({ where: { id } }), 0);
+  }
+  const id = crypto.randomUUID();
+  assert.equal((await post("/api/events", { events: [{ id, name: "page_view", path: "/admin/leads" }] })).status, 204);
+  assert.equal(await db.analyticsEvent.count({ where: { id } }), 0);
+  const clickId = crypto.randomUUID();
+  const response = await post("/api/events", { events: [{ id: clickId, name: "link_clicked", path: "/", category: "/free-tools" }] });
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.getSetCookie().length, 0);
+  assert.equal((await db.analyticsEvent.findUniqueOrThrow({ where: { id: clickId } })).sessionId, null);
+});
+
 test("resource downloads contain a real multi-page PDF and persist counts", async () => {
   const before = await db.resourceDownload.count();
   const res = await fetch(

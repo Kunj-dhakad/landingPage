@@ -223,7 +223,7 @@ export function PrivacyControls() {
   const path = usePathname();
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    setVisible(!readPreference("navonixx-consent"));
+    // Preferences are opened from the footer, without an automatic popup.
     const show = () => setVisible(true);
     window.addEventListener("privacy-settings", show);
     return () => window.removeEventListener("privacy-settings", show);
@@ -231,14 +231,32 @@ export function PrivacyControls() {
   useEffect(() => {
     track("page_view");
   }, [path]);
+  useEffect(() => {
+    const click = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
+      const element = event.target.closest("a, button, [role='button']");
+      if (!element || element.closest(".consent-panel, [data-analytics-ignore]")) return;
+      if (element instanceof HTMLAnchorElement) {
+        const url = new URL(element.href, location.origin);
+        if (!["http:", "https:"].includes(url.protocol)) return;
+        const destination = url.origin === location.origin ? url.pathname : "external";
+        track("link_clicked", undefined, destination.slice(0, 60));
+      } else {
+        track("button_clicked", undefined, "button");
+      }
+    };
+    document.addEventListener("click", click, { capture: true });
+    return () => document.removeEventListener("click", click, { capture: true });
+  }, []);
   async function choose(accept: boolean) {
-    savePreference("navonixx-consent", accept ? "accepted" : "declined");
-    setVisible(false);
-    await fetch("/api/consent", {
+    const response = await fetch("/api/consent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ accept }),
-    }).catch(() => {});
+    }).catch(() => null);
+    if (!response?.ok) return;
+    savePreference("navonixx-consent", accept ? "accepted" : "declined");
+    setVisible(false);
     if (accept) track("page_view");
   }
   return visible ? (
@@ -247,7 +265,8 @@ export function PrivacyControls() {
       <div>
         <p>
           <strong>Your work stays yours.</strong> Tools run in your browser.
-          Optional analytics count visits, never your inputs.{" "}
+          Basic counts record page views and clicks without tracking cookies.
+          Allow analytics to enable optional visitor and session statistics.{" "}
           <Link href="/privacy">Policy</Link>
         </p>
         <div className="consent-actions">

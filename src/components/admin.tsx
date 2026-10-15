@@ -872,7 +872,7 @@ export function AdminOverview({ entity = "overview" }: { entity?: string }) {
         )}
       </div>
       <p className="notice">
-        Traffic reflects consented, recorded activity. Unique visitors are
+        Traffic includes anonymous page-view counts. Unique visitors and sessions reflect optional, consented analytics and are
         cookie-based estimates. Lead/session and click/page ratios use different
         populations; they are not exact attribution or user-level conversion
         funnels.
