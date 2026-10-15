@@ -81,3 +81,7 @@ Published image URLs are stored in `src/config/media-assets.json`. The public de
 ### Activity analytics
 
 The analytics banner no longer opens automatically. Basic page views, button/link clicks and tool actions are recorded without visitor/session identifiers or tracking cookies. Inputs and query parameters are excluded. Visitors can disable activity recording through Privacy preferences in the footer; Do Not Track and Global Privacy Control are respected. Optional visitor/session attribution remains consent-based. Anonymous counts do not measure unique visitors.
+
+### Prompt and template cards
+
+Prompts and Templates use a searchable card library with 36 individual AI-generated illustrations hosted on ImageKit. Public image URLs live in `src/config/media-assets.json`; benefit copy, output labels and template customization hints live in `src/config/resource-previews.json`. Admin cover overrides and edited descriptions are preserved. Quick copy copies the prompt paragraph or complete Markdown template. Production rendering has no dependency on local image files or private image-generation/upload keys. Run `node scripts/verify-resources.mjs` against a seeded preview on port 3108 (or set `TEST_BASE_URL`) to verify hosted images, filtering, copy actions and responsive layouts.

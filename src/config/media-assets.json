@@ -145,5 +145,257 @@
     "folder": "/navonixx/site/images/banners",
     "size": 1534620,
     "sha256": "3c8b4346f80961061d4eef1380b1bf5f2d7f261dc9ceb9728397c17ac55a3ca7"
+  },
+  "/images/resources/project-scoping.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/project-scoping_EoQgI8m5p.webp",
+    "fileId": "6ad0bc55ead997d09ad9dddd",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 76904,
+    "sha256": "eafb8720bfb48b71e72188ce7e23e26bbf200d02a9477486f00e043a8c51563b"
+  },
+  "/images/resources/client-proposal-prompt.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/client-proposal-prompt_5jarKd9UB.webp",
+    "fileId": "6ad0bc57ead997d09ad9f9a6",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 106716,
+    "sha256": "6ca801369f7a370b89f299998f7eaab5923e9ba48169fb2a026bc76a4337f95a"
+  },
+  "/images/resources/portfolio-case-study.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/portfolio-case-study_go5pJqgC0.webp",
+    "fileId": "6ad0bc5aead997d09ada05db",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 113996,
+    "sha256": "aabc9ec457f44950f4fef5a38ede57a1d3eeb7b54980718c67950680bff0b0f2"
+  },
+  "/images/resources/client-follow-up.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/client-follow-up_Xoba4QekP.webp",
+    "fileId": "6ad0bc5cead997d09ada18ee",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 89810,
+    "sha256": "ca57e941efe8fbbadae5431723d64e23712b9dcea45852053d94348de227e64e"
+  },
+  "/images/resources/discovery-call.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/discovery-call_UHcLXyMTc.webp",
+    "fileId": "6ad0bc5eead997d09ada2738",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 107160,
+    "sha256": "1a79e6d4aeda5da2ece03c558ae7748b1b88f1f59b3fec136ffe0f960c186665"
+  },
+  "/images/resources/content-repurposing-prompt.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/content-repurposing-prompt_OXsK94bsu.webp",
+    "fileId": "6ad0bc60ead997d09ada37a8",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 70954,
+    "sha256": "9a98454b7668c018173f90f081eb12fad2b7a817fdd9bd3470c8f7abfe1a46fa"
+  },
+  "/images/resources/brief-review.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/brief-review_T9cEk1pNZ.webp",
+    "fileId": "6ad0bc63ead997d09ada483e",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 87076,
+    "sha256": "1c4c4b87f4643919f57ef3b2ed92fe1ea1ec10ed544f77363691c953131c1a4c"
+  },
+  "/images/resources/weekly-planning.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/weekly-planning_Foy1xcBA5.webp",
+    "fileId": "6ad0bc65ead997d09ada5454",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 101980,
+    "sha256": "3f5d459996c787c38e84d49216eaf6764730dd35f6990bfd54bb69575d404c21"
+  },
+  "/images/resources/client-feedback.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/client-feedback_ov8dfVYtx.webp",
+    "fileId": "6ad0bc67ead997d09ada63e9",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 79584,
+    "sha256": "c984c445febb131a4569990c93290afc6281afba2ae6a6d2530d46b37e4bb0d4"
+  },
+  "/images/resources/standard-operating-procedure.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/standard-operating-procedure_CGpDRMNB0o.webp",
+    "fileId": "6ad0bc69ead997d09ada702d",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 76806,
+    "sha256": "5d50ddd0c0aca2caf22a0ebcf1e319756f027c1347da2f75ecebefe019fde120"
+  },
+  "/images/resources/client-proposal.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/templates/client-proposal_7OWGLeyD5.webp",
+    "fileId": "6ad0bc6bead997d09ada8248",
+    "folder": "/navonixx/site/images/resources/templates",
+    "size": 92172,
+    "sha256": "fd5a1daeb1323d5056fa04327abfba5aacc2e570f530f680c571d1b6cae7e360"
+  },
+  "/images/resources/weekly-content-calendar.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/templates/weekly-content-calendar_a-pTOAKcK.webp",
+    "fileId": "6ad0bc6dead997d09ada8e3e",
+    "folder": "/navonixx/site/images/resources/templates",
+    "size": 140582,
+    "sha256": "1b27995b23288767169ce10eeeaf2ab023f98fef55d512073fe40934d2efb299"
+  },
+  "/images/resources/cold-outreach-email.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/cold-outreach-email__blCah5nA.webp",
+    "fileId": "6ad0bc70ead997d09ada9790",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 76312,
+    "sha256": "2d42fbf8b892479fb97d2ffe9f93a1f576379a220cb0608f35783334bd8baa1c"
+  },
+  "/images/resources/linkedin-post-from-lesson.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/linkedin-post-from-lesson_rD9ZCAj4E.webp",
+    "fileId": "6ad0bc72ead997d09adaa24e",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 105932,
+    "sha256": "37b975ba4f0ea0d3b0035820e55bd4aa7794354f54aab29f2884711611241a25"
+  },
+  "/images/resources/instagram-caption-set.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/instagram-caption-set_KL_ysC-Ql.webp",
+    "fileId": "6ad0bc74ead997d09adab151",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 149692,
+    "sha256": "8aae05577c81fe367bebadca1d6ec9022b8ac3befb1df60357fe2267c62fe8b3"
+  },
+  "/images/resources/youtube-script-outline.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/youtube-script-outline_6fy3UgB7I.webp",
+    "fileId": "6ad0bc77ead997d09adac25c",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 114096,
+    "sha256": "6a41e7359088de6136520ff80783bc195b0c30399200a67b1be1f1157296ee05"
+  },
+  "/images/resources/blog-post-brief.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/blog-post-brief_XTE0SmoyD.webp",
+    "fileId": "6ad0bc79ead997d09adad7f5",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 100892,
+    "sha256": "ecd9394662d9a9c2b2a180eee662170facccce1040ad40b0423e46ddde5a5d38"
+  },
+  "/images/resources/meta-description-set.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/meta-description-set_B3ur5YNxf.webp",
+    "fileId": "6ad0bc7bead997d09adae14c",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 83790,
+    "sha256": "b0d90a1ac5dc687017ac8c3db2da75fe4db89581c8e9e3c9ee80182c0d617bf6"
+  },
+  "/images/resources/faq-from-customer-questions.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/faq-from-customer-questions_nNNKTF-_d.webp",
+    "fileId": "6ad0bc7dead997d09adaedc7",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 76206,
+    "sha256": "8579b2af1bc681f64ec36fbbf31a7cd43d0a5ffc1344311d949e67ba08c763fc"
+  },
+  "/images/resources/sales-page-outline.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/sales-page-outline_xKWOMIyii.webp",
+    "fileId": "6ad0bc7fead997d09adafcbb",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 64618,
+    "sha256": "1eef6f3b6bd409018a93c43fe093b33f7b84d2b52ec6f8048bca774ff34d15ab"
+  },
+  "/images/resources/objection-handling.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/objection-handling_W3VnI3MDE.webp",
+    "fileId": "6ad0bc81ead997d09adb06db",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 77198,
+    "sha256": "4d9d4d4055fe72a5d717b48b9e2b9031b1b31af7dec86c71b3140e2568e71ded"
+  },
+  "/images/resources/late-payment-reminder.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/late-payment-reminder_9ZteQ4Jga.webp",
+    "fileId": "6ad0bc83ead997d09adb164b",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 76368,
+    "sha256": "6849f47b0676270216b52e292300646488195040b036f4b3cb2e58f6008050eb"
+  },
+  "/images/resources/pricing-page-copy.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/pricing-page-copy_nKZa2WF6q.webp",
+    "fileId": "6ad0bca7ead997d09adbf420",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 83574,
+    "sha256": "a12d78266423ef0bc66d99851258111c20fc52ff12cb71e0c48fc9c75eb6d84a"
+  },
+  "/images/resources/client-onboarding-email.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/client-onboarding-email_K2zVWg95T.webp",
+    "fileId": "6ad0bca9ead997d09adc0b23",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 98432,
+    "sha256": "27830a9472fb00330cf661a946442586ca6c857f03cb521e269d1dbacfba2c38"
+  },
+  "/images/resources/scope-creep-response.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/scope-creep-response_UT6dU7v92.webp",
+    "fileId": "6ad0bcabead997d09adc1125",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 82728,
+    "sha256": "b79e539f73def6f9a4aa7190b9d8eb9375f836e6d7f624b5f69786598e0af9ed"
+  },
+  "/images/resources/testimonial-request.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/testimonial-request_PwavMa-gU.webp",
+    "fileId": "6ad0bcadead997d09adc19d3",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 87804,
+    "sha256": "6711761f0b5475b814b5310b35f3bb5f6efca59e49cda8c74821ff00b9362734"
+  },
+  "/images/resources/decision-matrix.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/decision-matrix_EykPcfMPb.webp",
+    "fileId": "6ad0bcf9ead997d09addf961",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 136804,
+    "sha256": "d7f3cc6d78badb476f49ec4ceb3e430d6ee7d670dd3eb8c57787e6393eba6e07"
+  },
+  "/images/resources/inbox-triage.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/inbox-triage_ul2pLCIF3.webp",
+    "fileId": "6ad0bd1cead997d09adf1ef1",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 96668,
+    "sha256": "ab846862daa51383a6f680d7f6771a2889c50aa143ad5110db77fef1bbdf54c6"
+  },
+  "/images/resources/brand-voice-guide.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/brand-voice-guide_pXgkP3gWA.webp",
+    "fileId": "6ad0bd1eead997d09adf2bd4",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 79450,
+    "sha256": "d5c013ad661ddf853988aa5c9af6c6d5d74fd39a2213b88e1929c1e64bc2982a"
+  },
+  "/images/resources/meeting-summary.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/meeting-summary_5NZXnxWDw.webp",
+    "fileId": "6ad0bd33ead997d09adfafcd",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 102342,
+    "sha256": "15d01a95af22950689a2548ee27d3b3a3413dcbadfd1abdd436ae4dfee59e738"
+  },
+  "/images/resources/learn-new-skill.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/learn-new-skill_VeuMsPHB3.webp",
+    "fileId": "6ad0bd35ead997d09adfb915",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 92254,
+    "sha256": "01099263ce658f5fbb7b26461e76d8131d190c501f726b51d870650b1e106a07"
+  },
+  "/images/resources/ad-copy-variations.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/prompts/ad-copy-variations_Rapg8DsJr.webp",
+    "fileId": "6ad0bd6eead997d09ae1977b",
+    "folder": "/navonixx/site/images/resources/prompts",
+    "size": 92728,
+    "sha256": "98b12f2ccd317367d444bd2e1b5383b9c63be54f1b712443b6e17540eec110a3"
+  },
+  "/images/resources/cold-outreach-email-template.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/templates/cold-outreach-email-template_8cgYCiF6C.webp",
+    "fileId": "6ad0bd70ead997d09ae1bd87",
+    "folder": "/navonixx/site/images/resources/templates",
+    "size": 106174,
+    "sha256": "af14020558fe832f60987a5c90c267faa2aaa8e2013dd5dbe61ca482f1ec4ad9"
+  },
+  "/images/resources/payment-reminder-template.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/templates/payment-reminder-template_EnL_FtKxp.webp",
+    "fileId": "6ad0bd73ead997d09ae1d3ed",
+    "folder": "/navonixx/site/images/resources/templates",
+    "size": 65346,
+    "sha256": "bf7dea81db1c13706ea80c0ef5b3cd07db1fa18ca3686b43cfb1f598962eb69d"
+  },
+  "/images/resources/client-onboarding-checklist.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/templates/client-onboarding-checklist_WVkX5Tf6c.webp",
+    "fileId": "6ad0bd75ead997d09ae1dee1",
+    "folder": "/navonixx/site/images/resources/templates",
+    "size": 92764,
+    "sha256": "4585876d8fead361bbf2d87cd6111999362259d8daf0f09de75481b0f7c2a2da"
+  },
+  "/images/resources/project-brief-template.webp": {
+    "url": "https://ik.imagekit.io/0y2jm8mid/navonixx/site/images/resources/templates/project-brief-template_gy0wHoDh2.webp",
+    "fileId": "6ad0bd95ead997d09ae2c7e0",
+    "folder": "/navonixx/site/images/resources/templates",
+    "size": 80960,
+    "sha256": "55a88ceb2cf3a65a62e584f3e713fb0131b6d87febd3ab6dba173506fdf7c01c"
   }
 }

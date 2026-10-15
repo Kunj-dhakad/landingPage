@@ -1,0 +1,188 @@
+{
+  "project-scoping": {
+    "description": "Turn a rough client request into a clear scope, milestones, and the right questions to ask.",
+    "output": "A scoped project plan",
+    "originalDescription": "Act as a project strategist. Given [client goal], [budget], and [deadline], propose deliverables, milestones, assumptions, exclusions, …"
+  },
+  "client-proposal-prompt": {
+    "description": "Build a tailored proposal around the actual problem, deliverables, timeline, and fee.",
+    "output": "A client-ready proposal draft",
+    "originalDescription": "Draft a proposal for [client] addressing [problem]. Include a concise diagnosis, approach, deliverables, timeline, fee options, accepta…"
+  },
+  "portfolio-case-study": {
+    "description": "Give your project story a clear challenge, process, and outcome using only real evidence.",
+    "output": "A structured portfolio case study",
+    "originalDescription": "Turn these project notes [notes] into a case study: challenge, my role, approach, outcome, and lessons. Use only supplied evidence for …"
+  },
+  "client-follow-up": {
+    "description": "Follow up on a proposal with a thoughtful message that is easy for a prospect to answer.",
+    "output": "A warm follow-up email",
+    "originalDescription": "Write a concise follow-up to [prospect] about [proposal]. Mention one relevant benefit, ask one clear question, and offer an easy way t…"
+  },
+  "discovery-call": {
+    "description": "Walk into your next client call with a focused agenda and better discovery questions.",
+    "output": "A 30-minute discovery agenda",
+    "originalDescription": "Prepare a 30-minute discovery-call agenda for [service] and [client type]. Prioritize goals, constraints, decision makers, current proc…"
+  },
+  "content-repurposing-prompt": {
+    "description": "Turn an article you own into useful social posts, an email, and a carousel outline.",
+    "output": "Three posts, an email + a carousel",
+    "originalDescription": "Turn [article or notes] into three LinkedIn posts, a short email, and a carousel outline. Retain the source facts and flag any claims n…"
+  },
+  "brief-review": {
+    "description": "Spot unclear deliverables, missing dependencies, and scope risks before you quote.",
+    "output": "A prioritized clarification checklist",
+    "originalDescription": "Review [brief] for ambiguous deliverables, hidden dependencies, revision scope, intellectual-property questions, and payment risks. Ret…"
+  },
+  "weekly-planning": {
+    "description": "Fit your real priorities into a practical week with focus time and room for surprises.",
+    "output": "A realistic weekly schedule",
+    "originalDescription": "Given [projects], [deadlines], and [available hours], propose a realistic weekly schedule with focus blocks, admin time, and contingenc…"
+  },
+  "client-feedback": {
+    "description": "Respond to feedback clearly while separating agreed revisions from new scope.",
+    "output": "A clear client response",
+    "originalDescription": "Draft a response to [client feedback]. Separate agreed revisions from new scope, ask about ambiguous requests, and explain the timeline…"
+  },
+  "standard-operating-procedure": {
+    "description": "Turn scattered process notes into repeatable steps with owners and quality checks.",
+    "output": "A step-by-step operating procedure",
+    "originalDescription": "Convert [process notes] into a standard operating procedure with trigger, inputs, numbered steps, quality checks, owner, and completion…"
+  },
+  "client-proposal": {
+    "description": "Start with a structured proposal covering the goal, scope, timeline, price, and next step.",
+    "output": "An editable client proposal",
+    "inputs": ["Client", "Scope", "Timeline"],
+    "originalDescription": "A reusable scope, timeline, and pricing template for your next client."
+  },
+  "weekly-content-calendar": {
+    "description": "Plan seven days of content with a useful idea, action, and measure for each day.",
+    "output": "A seven-day content planning table",
+    "inputs": ["Audience", "Channels", "Weekly goal"],
+    "originalDescription": "Seven days of useful content, with room for your audience and goals."
+  },
+  "cold-outreach-email": {
+    "description": "Start a relevant conversation with a concise, personalized email and one clear question.",
+    "output": "An outreach email under 120 words",
+    "originalDescription": "Write a short cold email to [prospect role] at [company type]. Reference one specific observation about their business: [observation]. …"
+  },
+  "linkedin-post-from-lesson": {
+    "description": "Shape a real project lesson into a thoughtful post with a hook and a useful takeaway.",
+    "output": "A short-form professional post",
+    "originalDescription": "Turn this project lesson into a LinkedIn post: [lesson and context]. Open with a specific moment, explain what changed, and end with a …"
+  },
+  "instagram-caption-set": {
+    "description": "Plan a balanced week of captions, from useful lessons to behind-the-scenes stories.",
+    "output": "Seven captions with hooks + CTAs",
+    "originalDescription": "Write seven Instagram captions for [business] targeting [audience]. Mix education, behind-the-scenes, and one soft offer for [product].…"
+  },
+  "youtube-script-outline": {
+    "description": "Organize your video around a strong opening, clear examples, and a useful next step.",
+    "output": "A hook + three-part video outline",
+    "originalDescription": "Create a YouTube video outline about [topic] for [audience]. Include a 15-second hook, three main sections with examples, a mid-video r…"
+  },
+  "blog-post-brief": {
+    "description": "Give a writer a clear content plan based on search intent and the reader?s real question.",
+    "output": "An SEO brief with a heading outline",
+    "originalDescription": "Create a content brief for a blog post targeting [keyword]. Include search intent, the reader's main question, a suggested H2/H3 outlin…"
+  },
+  "meta-description-set": {
+    "description": "Draft concise search snippets that explain the benefit without turning to clickbait.",
+    "output": "Three meta description options",
+    "originalDescription": "Write three meta descriptions for a page about [topic] targeting [keyword]. Each must be 140–155 characters, include the keyword natura…"
+  },
+  "faq-from-customer-questions": {
+    "description": "Turn genuine customer questions into grouped answers that are easy to find and use.",
+    "output": "A grouped FAQ with page suggestions",
+    "originalDescription": "Here are real questions customers ask: [questions]. Group duplicates, write a clear 2–3 sentence answer for each, and suggest which pag…"
+  },
+  "sales-page-outline": {
+    "description": "Make an offer easier to understand with honest benefits, objections, and a single next step.",
+    "output": "A structured sales page outline",
+    "originalDescription": "Outline a sales page for [offer] aimed at [audience]. Include the main problem, the promise, who it is and is not for, what is included…"
+  },
+  "objection-handling": {
+    "description": "Prepare respectful responses to price, timing, and trust concerns before a sales call.",
+    "output": "Five objections + thoughtful replies",
+    "originalDescription": "List the five most likely objections to [offer] from [audience] (for example price, timing, trust). For each, write a respectful, hones…"
+  },
+  "pricing-page-copy": {
+    "description": "Explain each package clearly so customers can see what is included and who it fits.",
+    "output": "Package descriptions + positioning",
+    "originalDescription": "Write copy for a pricing page with [number] packages for [service]. For each package: who it is for, what is included, and the outcome.…"
+  },
+  "client-onboarding-email": {
+    "description": "Welcome a client with a clear scope recap, input checklist, and communication plan.",
+    "output": "A practical client welcome email",
+    "originalDescription": "Write a welcome email for a new client of [service]. Confirm the scope [scope], list what I need from them by [date], explain how we wi…"
+  },
+  "late-payment-reminder": {
+    "description": "Ask for an overdue payment politely, with clear invoice details and a firmer follow-up.",
+    "output": "Two payment reminder drafts",
+    "originalDescription": "Write a polite payment reminder for invoice [number] of [amount] due on [date], now [days] days late. Stay friendly, restate payment de…"
+  },
+  "scope-creep-response": {
+    "description": "Keep the conversation constructive when a client requests work outside the agreement.",
+    "output": "A polite scope-change response",
+    "originalDescription": "A client asked for [new request], which is outside our agreed scope [scope]. Write a response that stays positive, explains it is addit…"
+  },
+  "testimonial-request": {
+    "description": "Make it easy for a happy client to share specific feedback and permission to use it.",
+    "output": "A feedback request + three questions",
+    "originalDescription": "Write a short message asking [client] for a testimonial after [project]. Make it easy: suggest three questions they can answer in two m…"
+  },
+  "meeting-summary": {
+    "description": "Pull decisions, owners, deadlines, and unresolved questions out of meeting notes.",
+    "output": "A summary with assigned next steps",
+    "originalDescription": "Summarize this meeting transcript: [transcript]. Return decisions, action items with owners and dates, open questions, and risks. Quote…"
+  },
+  "decision-matrix": {
+    "description": "Compare options against weighted criteria and see which missing facts could change the decision.",
+    "output": "A weighted comparison matrix",
+    "originalDescription": "Help me decide between [options] for [goal]. Propose 5 weighted criteria, score each option with a short reason, and show the total. Th…"
+  },
+  "inbox-triage": {
+    "description": "Sort a busy inbox into practical next actions without sharing confidential email bodies.",
+    "output": "Four inbox groups + short replies",
+    "originalDescription": "Here are subject lines and senders from my inbox: [list]. Sort them into reply today, schedule, delegate, and archive. Draft one-line r…"
+  },
+  "learn-new-skill": {
+    "description": "Build a manageable learning routine with weekly outcomes and a small practice project.",
+    "output": "A four-week learning plan",
+    "originalDescription": "Create a 4-week plan to learn [skill] for [goal], with 5 hours per week. Include weekly outcomes, free resources to look for, one pract…"
+  },
+  "brand-voice-guide": {
+    "description": "Turn your own writing samples into clear voice traits, examples, and words to use or avoid.",
+    "output": "A reusable brand voice guide",
+    "originalDescription": "Based on these samples of my writing [samples] and my audience [audience], create a brand voice guide: three voice traits with do and d…"
+  },
+  "ad-copy-variations": {
+    "description": "Explore focused headline and description variations around one clear product benefit.",
+    "output": "Ten headlines + five descriptions",
+    "originalDescription": "Write ten ad headlines (max 30 characters) and five descriptions (max 90 characters) for [product] targeting [audience]. Focus on one c…"
+  },
+  "cold-outreach-email-template": {
+    "description": "Personalize a respectful first message and a short follow-up without starting from a blank page.",
+    "output": "An email + five-day follow-up",
+    "inputs": ["Prospect", "Service", "Observation"],
+    "originalDescription": "A short, respectful outreach template with a follow-up sequence."
+  },
+  "payment-reminder-template": {
+    "description": "Keep invoice reminders consistent with a gentle, overdue, and firmer follow-up sequence.",
+    "output": "Three editable reminder emails",
+    "inputs": ["Invoice", "Amount", "Due date"],
+    "originalDescription": "Three escalating reminders for late invoices, from gentle to firm."
+  },
+  "client-onboarding-checklist": {
+    "description": "Collect the agreement, assets, access, and approvals you need before a project starts.",
+    "output": "A complete kickoff checklist",
+    "inputs": ["Client", "Project", "Kickoff date"],
+    "originalDescription": "Everything to collect and confirm before a project starts."
+  },
+  "project-brief-template": {
+    "description": "Give clients a simple worksheet to explain the goal, audience, deliverables, and constraints.",
+    "output": "A one-page project brief",
+    "inputs": ["Goal", "Audience", "Budget"],
+    "originalDescription": "A one-page brief that turns vague requests into clear scope."
+  }
+}
