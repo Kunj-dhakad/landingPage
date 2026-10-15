@@ -55,3 +55,18 @@ test("provider failures never expose upstream secrets, and other-account respons
   request.mock.mockImplementation(async () => Response.json({ url: "https://ik.imagekit.io/other-account/a.png" }));
   await assert.rejects(uploadToImageKit(file(), "a.png"), /does not match/);
 }));
+
+
+test("published assets remain allowed when Vercel has no ImageKit endpoint variable", () => {
+  const before = process.env.IMAGEKIT_URL_ENDPOINT;
+  delete process.env.IMAGEKIT_URL_ENDPOINT;
+  try {
+    assert.equal(imageKitEndpoint()?.href, "https://ik.imagekit.io/0y2jm8mid");
+    assert.ok(isImageKitAsset("https://ik.imagekit.io/0y2jm8mid/navonixx/site/branding/logos/logo.png"));
+    assert.equal(isImageKitAsset("https://ik.imagekit.io/other-account/logo.png"), false);
+    assert.equal(imageKitEndpoint("invalid"), null);
+  } finally {
+    if (before === undefined) delete process.env.IMAGEKIT_URL_ENDPOINT;
+    else process.env.IMAGEKIT_URL_ENDPOINT = before;
+  }
+});

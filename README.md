@@ -73,3 +73,7 @@ The generated Prisma client lives in `node_modules/@navonixx/prisma-client` and 
 See [deployment instructions](docs/DEPLOYMENT.md) and [architecture](docs/ARCHITECTURE.md). Configure managed PostgreSQL, a verified Resend sender, the final site origin, authentication secret, optional Blob storage, and retention scheduling before launch. Actual Resend delivery and Blob uploads require your service credentials and must be verified in your account. Email states distinguish provider acceptance from confirmed delivery; no delivery webhook is claimed.
 
 The implementation does not claim legal compliance, guaranteed Lighthouse scores, external email delivery, or a public deployment without checking those in the target environment. Review the operator's contact/privacy/terms information before publishing. Analytics use consented populations and estimate visitor/session activity; ratios are labeled accurately and do not imply exact identity-level attribution.
+
+### ImageKit delivery on Vercel
+
+Published image URLs are stored in `src/config/media-assets.json`. The public delivery endpoint defaults to `https://ik.imagekit.io/0y2jm8mid`, so logo, previews and videos work even when `IMAGEKIT_URL_ENDPOINT` is absent on Vercel. No private key is needed to display them. For admin uploads, configure `IMAGEKIT_PRIVATE_KEY` and optionally override `IMAGEKIT_URL_ENDPOINT` for your account. Redeploy after changing image configuration or environment variables.

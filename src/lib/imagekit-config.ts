@@ -1,4 +1,8 @@
-export function imageKitEndpoint(value = process.env.IMAGEKIT_URL_ENDPOINT) {
+// Public delivery endpoint for the assets already published in media-assets.json.
+// Rendering these assets never needs the private upload key.
+export const publicImageKitEndpoint = "https://ik.imagekit.io/0y2jm8mid";
+
+export function imageKitEndpoint(value = process.env.IMAGEKIT_URL_ENDPOINT || publicImageKitEndpoint) {
   if (!value) return null;
   try {
     const url = new URL(value);
