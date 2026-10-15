@@ -1,3 +1,4 @@
+import { GuideCard } from "@/components/guide-card";
 import Link from "next/link";
 import Image from "next/image";
 import { assetUrl } from "@/lib/media-assets";
@@ -195,7 +196,12 @@ export default async function Home() {
                 </div>
                 <span>YOUR SMARTER WORKSPACE</span>
                 <span className="mini-logo">
-                  <Image src={assetUrl("/images/navonixx-logo.png")} alt="" width={22} height={22} />
+                  <Image
+                    src={assetUrl("/images/navonixx-logo.png")}
+                    alt=""
+                    width={22}
+                    height={22}
+                  />
                 </span>
               </div>
               <div className="workspace-content">
@@ -379,7 +385,11 @@ export default async function Home() {
           </div>
           <div className="offer-list">
             {offers.map((o) => (
-              <Link key={o.slug} href={`/reviews/${o.slug}`} className="offer-card panel">
+              <Link
+                key={o.slug}
+                href={`/reviews/${o.slug}`}
+                className="offer-card panel"
+              >
                 <div className="pick-head">
                   <ToolMonogram name={o.name} size={48} />
                   <div>
@@ -606,6 +616,7 @@ export default async function Home() {
           </div>
           <div className="resource-grid">
             {[...articles, ...workflows].slice(0, 3).map((a, i) => {
+              if (a.kind === "blog") return <GuideCard key={a.slug} item={a} />;
               const Art = [BarChart3, Sparkles, Workflow][i];
               return (
                 <Link
@@ -676,7 +687,9 @@ export default async function Home() {
               <br />
               Straight to your inbox.
             </h2>
-            <p>Short, practical, and easy to unsubscribe from. No spam, ever.</p>
+            <p>
+              Short, practical, and easy to unsubscribe from. No spam, ever.
+            </p>
           </div>
           <EmailForm newsletter />
         </div>

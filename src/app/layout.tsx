@@ -17,6 +17,7 @@ import "./tool-runner.css";
 import "./select.css";
 import "./admin-login.css";
 import "./resource-library.css";
+import "./guide-cards.css";
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://navonixx.vercel.app",

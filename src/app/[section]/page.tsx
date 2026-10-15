@@ -1,3 +1,4 @@
+import { GuideCard } from "@/components/guide-card";
 import { ResourceLibrary } from "@/components/resource-library";
 import Link from "next/link";
 import Image from "next/image";
@@ -101,38 +102,42 @@ export default async function Page({ params }: Props) {
           <ResourceLibrary key={section} items={items} kind={section} />
         ) : (
           <div className="resource-grid">
-            {items.map((item, i) => (
-              <Link
-                className="resource-card panel"
-                key={`${item.kind}-${item.slug}`}
-                href={
-                  item.kind === "toolkit"
-                    ? "/toolkit"
-                    : `/${item.kind}/${item.slug}`
-                }
-              >
-                {item.coverUrl ? (
-                  <Image
-                    className="resource-cover"
-                    src={item.coverUrl}
-                    alt=""
-                    width={400}
-                    height={175}
-                  />
-                ) : (
-                  <div className={`article-art article-${i % 3}`}>
-                    <BookOpen size={45} />
-                    <span>{item.category}</span>
-                  </div>
-                )}
-                <span className="eyebrow">{item.kind}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <span className="text-link">
-                  Explore resource <ArrowUpRight size={16} />
-                </span>
-              </Link>
-            ))}
+            {items.map((item, i) =>
+              item.kind === "blog" ? (
+                <GuideCard key={`${item.kind}-${item.slug}`} item={item} />
+              ) : (
+                <Link
+                  className="resource-card panel"
+                  key={`${item.kind}-${item.slug}`}
+                  href={
+                    item.kind === "toolkit"
+                      ? "/toolkit"
+                      : `/${item.kind}/${item.slug}`
+                  }
+                >
+                  {item.coverUrl ? (
+                    <Image
+                      className="resource-cover"
+                      src={item.coverUrl}
+                      alt=""
+                      width={400}
+                      height={175}
+                    />
+                  ) : (
+                    <div className={`article-art article-${i % 3}`}>
+                      <BookOpen size={45} />
+                      <span>{item.category}</span>
+                    </div>
+                  )}
+                  <span className="eyebrow">{item.kind}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <span className="text-link">
+                    Explore resource <ArrowUpRight size={16} />
+                  </span>
+                </Link>
+              ),
+            )}
           </div>
         )}
         {!items.length && section !== "prompts" && section !== "templates" && (

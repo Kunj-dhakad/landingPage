@@ -1,0 +1,119 @@
+.public-site .guide-card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 0;
+  border: 1px solid color-mix(in srgb, var(--blue) 12%, var(--line));
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow:
+    0 4px 8px #16335b08,
+    0 16px 28px -12px #16335b30;
+}
+.public-site .guide-card::before,
+.public-site .guide-card::after {
+  display: none;
+}
+.public-site .guide-card:hover {
+  transform: none;
+  border-color: color-mix(in srgb, var(--blue) 30%, var(--line));
+}
+.guide-card-art {
+  position: relative;
+  isolation: isolate;
+  height: 118px;
+  flex: none;
+  overflow: hidden;
+  border: 1px solid #ccdcf4;
+  border-radius: 11px;
+  background: linear-gradient(130deg, #dbe8ff, #edf2ff);
+}
+.guide-card:nth-child(3n + 2) .guide-card-art {
+  background: linear-gradient(130deg, #e5e0ff, #eef0ff);
+}
+.guide-card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+.guide-card-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 7px;
+  border-radius: 7px;
+  background: #fffffff0;
+  color: #24539b;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+.guide-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px 3px 0;
+  min-width: 0;
+}
+.guide-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.guide-card-meta > span:first-child {
+  color: var(--blue);
+  font-weight: 600;
+}
+.guide-card-meta > span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.public-site .guide-card h3 {
+  margin: 9px 0 7px;
+  font-size: 17px;
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+  min-height: 2.7em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.public-site .guide-card p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 3em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.guide-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 10px 0 2px;
+  border-top: 1px solid var(--line);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 600;
+}
+.resource-grid > .guide-card:last-child {
+  grid-column: auto;
+}
+@media (max-width: 600px) {
+  .guide-card-art {
+    height: 112px;
+  }
+}

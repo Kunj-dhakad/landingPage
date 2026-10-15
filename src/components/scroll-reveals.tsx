@@ -32,7 +32,7 @@ export function ScrollReveals() {
     );
     const observeNewContent = () => {
       const nodes = root.querySelectorAll(
-        ".section-heading, .category-card, .tool-card, .resource-card:not(.resource-kit-card), .workflow-card, .toolkit-banner, .newsletter, .footer-welcome, .tool-guide > *, .content-grid > *, .comparison-card",
+        ".section-heading, .category-card, .tool-card, .resource-card:not(.resource-kit-card):not(.guide-card), .workflow-card, .toolkit-banner, .newsletter, .footer-welcome, .tool-guide > *, .content-grid > *, .comparison-card",
       );
       for (const node of nodes) {
         if (seen.current.has(node)) continue;
