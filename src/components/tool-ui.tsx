@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -505,13 +506,7 @@ function FieldInput({
     );
   if (field.type === "select")
     return (
-      <select value={value} onChange={(e) => onChange(e.target.value)}>
-        {field.options?.map((option) => (
-          <option key={option} value={option}>
-            {option[0].toUpperCase() + option.slice(1)}
-          </option>
-        ))}
-      </select>
+      <Select aria-label={field.label} value={value} onValueChange={onChange} options={(field.options || []).map(option => ({value: option, label: option[0].toUpperCase() + option.slice(1)}))} />
     );
   if (field.type === "textarea")
     return (

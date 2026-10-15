@@ -14,6 +14,7 @@ import "./design-system.css";
 import "./compact-pages.css";
 import "./funnel.css";
 import "./tool-runner.css";
+import "./select.css";
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://navonixx.vercel.app",

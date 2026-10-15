@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import Image from "next/image";
 import { assetUrl } from "@/lib/media-assets";
@@ -452,37 +453,11 @@ export function AdminData({
           }}
         />
         {entity !== "settings" && (
-          <select
-            aria-label="Sort by date"
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-          >
-            <option value="desc">Newest first</option>
-            <option value="asc">Oldest first</option>
-          </select>
+          <Select aria-label="Sort by date" value={sort} onValueChange={setSort} options={[{ value: "desc", label: "Newest first" }, { value: "asc", label: "Oldest first" }]} />
         )}
         {entity === "leads" && (
           <>
-            <select
-              aria-label="Lead subscription filter"
-              value={status}
-              onChange={(e) => {
-                setStatus(e.target.value);
-                setPage(1);
-              }}
-            >
-              {[
-                "",
-                "TRANSACTIONAL",
-                "PENDING",
-                "SUBSCRIBED",
-                "UNSUBSCRIBED",
-              ].map((s) => (
-                <option key={s} value={s}>
-                  {s || "All statuses"}
-                </option>
-              ))}
-            </select>
+            <Select aria-label="Lead subscription filter" value={status} onValueChange={value => { setStatus(value); setPage(1); }} options={[{ value: "", label: "All statuses" }, ...["TRANSACTIONAL", "PENDING", "SUBSCRIBED", "UNSUBSCRIBED"].map(value => ({ value, label: value[0] + value.slice(1).toLowerCase() }))]} />
             <a
               className="button secondary small"
               href="/api/admin/export"
@@ -560,16 +535,7 @@ export function AdminData({
                     }
                   />
                 ) : f.options ? (
-                  <select
-                    value={String(draft[f.key])}
-                    onChange={(e) =>
-                      setDraft({ ...draft, [f.key]: e.target.value })
-                    }
-                  >
-                    {f.options.map((o) => (
-                      <option key={o}>{o}</option>
-                    ))}
-                  </select>
+                  <Select aria-label={f.label} value={String(draft[f.key] || "")} onValueChange={value => setDraft({ ...draft, [f.key]: value })} options={f.options} />
                 ) : f.type === "textarea" || f.type === "list" ? (
                   <textarea
                     rows={f.key === "body" ? 12 : 4}
@@ -842,13 +808,7 @@ export function AdminOverview({ entity = "overview" }: { entity?: string }) {
       <div className="admin-tools">
         <label className="field">
           Date range
-          <select value={days} onChange={(e) => setDays(e.target.value)}>
-            <option value="today">Today (India time)</option>
-            <option value="yesterday">Yesterday (India time)</option>
-            <option value="7">Last 7 days</option>
-            <option value="30">Last 30 days</option>
-            <option value="custom">Custom range</option>
-          </select>
+          <Select aria-label="Date range" value={days} onValueChange={setDays} options={[{ value: "today", label: "Today (India time)" }, { value: "yesterday", label: "Yesterday (India time)" }, { value: "7", label: "Last 7 days" }, { value: "30", label: "Last 30 days" }, { value: "custom", label: "Custom range" }]} />
         </label>
         {days === "custom" && (
           <>

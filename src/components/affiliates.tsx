@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { useState } from "react";
 import { Search, ArrowUpRight, Sparkles } from "lucide-react";
@@ -57,41 +58,15 @@ export function AffiliateDirectory({ listings }: { listings: Listing[] }) {
           <label className="sr-only" htmlFor="ai-category">
             Category
           </label>
-          <select
-            id="ai-category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            {categories.map((c) => (
-              <option key={c}>{c}</option>
-            ))}
-          </select>
+          <Select id="ai-category" value={category} onValueChange={setCategory} options={categories} />
           <label className="sr-only" htmlFor="ai-pricing">
             Pricing model
           </label>
-          <select
-            id="ai-pricing"
-            value={pricing}
-            onChange={(e) => setPricing(e.target.value)}
-          >
-            {["All plans", "FREE", "FREEMIUM", "PAID", "UNVERIFIED"].map(
-              (c) => (
-                <option key={c}>{c}</option>
-              ),
-            )}
-          </select>
+          <Select id="ai-pricing" value={pricing} onValueChange={setPricing} options={[{value: "All plans", label: "All plans"}, ...["FREE", "FREEMIUM", "PAID", "UNVERIFIED"].map(value => ({value, label: value[0] + value.slice(1).toLowerCase()}))]} />
           <label className="sr-only" htmlFor="ai-use-case">
             Use case
           </label>
-          <select
-            id="ai-use-case"
-            value={useCase}
-            onChange={(e) => setUseCase(e.target.value)}
-          >
-            {useCases.map((c) => (
-              <option key={c}>{c}</option>
-            ))}
-          </select>
+          <Select id="ai-use-case" value={useCase} onValueChange={setUseCase} options={useCases} />
         </div>
       </div>
       <div className="resource-grid">
@@ -144,25 +119,7 @@ export function Comparison({ listings }: { listings: Listing[] }) {
         {selected.map((slug, i) => (
           <label key={i}>
             <span className="sr-only">Tool {i + 1}</span>
-            <select
-              value={slug}
-              onChange={(e) => {
-                const next = [...selected];
-                next[i] = e.target.value;
-                setSelected(next);
-                if (next.filter(Boolean).length >= 2)
-                  track("comparison_created");
-              }}
-            >
-              <option value="">Select tool {i + 1}</option>
-              {listings
-                .filter((a) => !selected.includes(a.slug) || a.slug === slug)
-                .map((a) => (
-                  <option value={a.slug} key={a.slug}>
-                    {a.name}
-                  </option>
-                ))}
-            </select>
+            <Select aria-label={`Tool ${i + 1}`} value={slug} onValueChange={value => { const next = [...selected]; next[i] = value; setSelected(next); if (next.filter(Boolean).length >= 2) track("comparison_created"); }} options={[{value: "", label: `Select tool ${i + 1}`}, ...listings.filter(a => !selected.includes(a.slug) || a.slug === slug).map(a => ({value: a.slug, label: a.name}))]} />
           </label>
         ))}
       </div>

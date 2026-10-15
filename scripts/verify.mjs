@@ -120,12 +120,10 @@ try {
   ])
     assert.equal((await page.goto(base + route)).status(), 200, route);
   await page.goto(base + "/ai-tools/compare");
-  await page
-    .getByRole("combobox", { name: "Tool 1", exact: true })
-    .selectOption("chatgpt");
-  await page
-    .getByRole("combobox", { name: "Tool 2", exact: true })
-    .selectOption("notion-ai");
+  await page.getByRole("combobox", { name: "Tool 1", exact: true }).click();
+  await page.getByRole("option", { name: "ChatGPT", exact: true }).click();
+  await page.getByRole("combobox", { name: "Tool 2", exact: true }).click();
+  await page.getByRole("option", { name: "Notion AI", exact: true }).click();
   assert.equal(
     await page.locator(".compare-table th").first().innerText(),
     "Compare",
@@ -243,7 +241,8 @@ try {
     await page
       .getByLabel("URL slug", { exact: true })
       .fill("integration-resource");
-    await page.getByLabel("Resource type").selectOption("blog");
+    await page.getByRole("combobox", { name: "Resource type" }).click();
+    await page.getByRole("option", { name: "blog", exact: true }).click();
     await page
       .getByLabel("Short description")
       .fill("A genuine integration test of content publishing.");
