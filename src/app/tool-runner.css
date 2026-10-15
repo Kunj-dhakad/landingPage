@@ -1,61 +1,50 @@
-/* Free tool pages: slim header, natural-height input, sticky live result. */
-.tr-page {
+/* Free tool pages: compact toolbar and immediate access to the workspace. */
+.public-site .tool-page-body {
   padding-top: 18px;
 }
-.tr-header .breadcrumb {
+.tr-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-.tr-title {
-  display: flex;
-  align-items: center;
+  justify-content: space-between;
   gap: 16px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
 }
-.tr-title .tool-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  flex: none;
+.tr-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  min-width: 0;
 }
-.public-site .tr-title h1 {
-  font-size: clamp(28px, 3vw, 40px);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+.public-site .tr-heading h1 {
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
   font-weight: 700;
 }
-.tr-title p {
-  margin-top: 6px;
+.tr-category {
+  padding: 3px 9px;
+  border-radius: 7px;
+  background: var(--tint);
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 11px;
+  font-weight: 600;
 }
-.tr-badges {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.tr-badges li {
+.tr-all-tools {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 11px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--surface);
+  gap: 4px;
+  flex: none;
+  color: var(--blue);
   font-size: 12px;
   font-weight: 600;
-  color: var(--muted);
+  padding-block: 8px;
 }
-.tr-badges svg {
-  color: var(--blue);
-}
-.public-site .tool-page-body {
-  padding-top: 22px;
+.tr-all-tools:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* Workspace */
@@ -239,7 +228,7 @@
 /* Result */
 .tr-result-body {
   flex: 1;
-  min-height: 200px;
+  min-height: 160px;
   overflow: auto;
   scrollbar-width: thin;
 }
@@ -642,15 +631,30 @@
     padding: 18px;
     border-radius: 18px;
   }
-  .tr-title .tool-icon {
-    width: 46px;
-    height: 46px;
+  .public-site .tool-page-body {
+    padding-top: 12px;
   }
-  .tr-title p {
-    font-size: 14px;
+  .tr-header {
+    gap: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
   }
-  .tr-badges li:nth-child(n + 3) {
+  .tr-category,
+  .tr-reset-detail {
     display: none;
+  }
+  .tr-pane-head {
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+  .public-site .tr-pane-head h2 {
+    font-size: 16px;
+  }
+  .tr-ghost {
+    padding: 6px 8px;
+    gap: 4px;
+    font-size: 11px;
+    white-space: nowrap;
   }
   .tr-palette {
     height: 150px;

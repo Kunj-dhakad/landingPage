@@ -43,10 +43,8 @@ export default async function Page({ params }: Props) {
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         }}
       />
-      <div className="container tr-page">
-        <ToolHeader tool={tool} />
-      </div>
       <div className="container page-body tool-page-body">
+        <ToolHeader tool={tool} />
         <ToolRunner key={tool.slug} tool={tool} />
         <div className="tool-guide">
           <div>

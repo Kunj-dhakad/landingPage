@@ -14,11 +14,7 @@ import {
   Download,
   Check,
   Printer,
-  ChevronRight,
-  Sparkles,
   Zap,
-  Lock,
-  UserX,
   ShieldCheck,
   Eraser,
   RefreshCw,
@@ -556,44 +552,15 @@ function FieldInput({
 }
 
 export function ToolHeader({ tool }: { tool: Tool }) {
-  const Icon =
-    categoryIcons[tool.category as keyof typeof categoryIcons] || Code2;
   return (
     <header className="tr-header">
-      <nav className="breadcrumb" aria-label="Breadcrumb">
-        <Link href="/">Home</Link>
-        <ChevronRight size={12} />
-        <Link href="/free-tools">Free Tools</Link>
-        <ChevronRight size={12} />
-        <span aria-current="page">{tool.name}</span>
-      </nav>
-      <div className="tr-title">
-        <span className={`tool-icon ${tool.category.toLowerCase()}`}>
-          {tool.iconUrl ? (
-            <Image src={tool.iconUrl} alt="" width={26} height={26} />
-          ) : (
-            <Icon size={24} />
-          )}
-        </span>
-        <div>
-          <h1>{tool.name}</h1>
-          <p>{tool.description}</p>
-        </div>
+      <div className="tr-heading">
+        <h1>{tool.name}</h1>
+        <span className="tr-category">{tool.category}</span>
       </div>
-      <ul className="tr-badges">
-        <li>
-          <Sparkles size={13} /> Free forever
-        </li>
-        <li>
-          <Zap size={13} /> Live results
-        </li>
-        <li>
-          <Lock size={13} /> Runs in your browser
-        </li>
-        <li>
-          <UserX size={13} /> No sign-up
-        </li>
-      </ul>
+      <Link href="/free-tools" className="tr-all-tools">
+        All tools <ArrowUpRight size={15} />
+      </Link>
     </header>
   );
 }
@@ -676,12 +643,14 @@ export function ToolRunner({ tool }: { tool: Tool }) {
           <button
             type="button"
             className="tr-ghost"
+            aria-label="Reset example"
             onClick={() => {
               setValues(initial);
               setError("");
             }}
           >
-            <RotateCcw size={14} /> Reset example
+            <RotateCcw size={14} />
+            <span>Reset<span className="tr-reset-detail"> example</span></span>
           </button>
           {textarea && (
             <button
