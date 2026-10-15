@@ -3,10 +3,6 @@
   padding-top: 18px;
 }
 .tr-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   padding-bottom: 14px;
   margin-bottom: 16px;
   border-bottom: 1px solid var(--line);
@@ -32,24 +28,24 @@
   font-size: 11px;
   font-weight: 600;
 }
-.tr-back {
-  display: inline-flex;
+.public-site .tr-header .breadcrumb {
+  display: flex;
   align-items: center;
-  gap: 4px;
-  flex: none;
-  height: 34px;
-  padding: 0 10px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: var(--surface);
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 11px;
+  line-height: 16px;
   color: var(--muted);
-  font-size: 12px;
-  font-weight: 600;
 }
-.tr-back:hover {
-  color: var(--blue);
-  background: var(--tint);
-  border-color: var(--blue);
+.tr-header .breadcrumb :is(a, svg) {
+  flex-shrink: 0;
+}
+.tr-header .breadcrumb [aria-current="page"] {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Workspace */
@@ -672,7 +668,6 @@
     padding-top: 12px;
   }
   .tr-header {
-    gap: 10px;
     padding-bottom: 10px;
     margin-bottom: 12px;
   }
