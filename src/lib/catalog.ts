@@ -1,3 +1,4 @@
+import { retryDatabaseRead } from "./database-connection";
 import { db, databaseReady } from "./db";
 import { tools } from "./tools";
 import { content } from "./content";
@@ -5,7 +6,7 @@ import { affiliateContent, affiliateEditorial } from "./affiliate-content";
 import { assetUrl } from "./media-assets";
 export async function getSettings() {
   if (!databaseReady()) return {};
-  const rows = await db.siteSetting.findMany();
+  const rows = await retryDatabaseRead(() => db.siteSetting.findMany());
   return Object.fromEntries(rows.map((r) => [r.key, r.value])) as Record<
     string,
     string
@@ -13,7 +14,7 @@ export async function getSettings() {
 }
 export async function getTools() {
   if (!databaseReady()) return tools;
-  const records = await db.freeTool.findMany();
+  const records = await retryDatabaseRead(() => db.freeTool.findMany());
   const meta = new Map(records.map((t) => [t.slug, t]));
   return tools
     .filter((t) => meta.get(t.slug)?.enabled !== false)
@@ -30,10 +31,10 @@ export async function getTools() {
 }
 export async function getContent(kind?: string) {
   if (!databaseReady()) return content.filter((c) => !kind || c.kind === kind);
-  const records = await db.resource.findMany({
+  const records = await retryDatabaseRead(() => db.resource.findMany({
     where: { published: true, ...(kind ? { kind } : {}) },
     orderBy: { createdAt: "desc" },
-  });
+  }));
   return records.map((record) => ({ ...record, assetPath: record.assetPath ? assetUrl(record.assetPath) : null, coverUrl: record.coverUrl ? assetUrl(record.coverUrl) : null }));
 }
 export async function getAffiliates() {
@@ -44,10 +45,10 @@ export async function getAffiliates() {
       logoUrl: null as string | null,
       editorial: affiliateEditorial[a.slug] ?? null,
     }));
-  const records = await db.affiliateTool.findMany({
+  const records = await retryDatabaseRead(() => db.affiliateTool.findMany({
     where: { published: true },
     orderBy: [{ featured: "desc" }, { name: "asc" }],
-  });
+  }));
   return records.map((record) => ({
     ...record,
     logoUrl: record.logoUrl ? assetUrl(record.logoUrl) : null,
