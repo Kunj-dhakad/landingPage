@@ -22,17 +22,26 @@ export const authOptions: NextAuthOptions = {
           process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
           { headers: request.headers as Record<string, string> },
         );
-        if (
-          !databaseReady() ||
-          !process.env.AUTH_SECRET ||
-          !sameOrigin(authRequest) ||
-          !(await rateLimit(authRequest, "login", 5))
-        )
+        const fail = (reason: string, extra?: Record<string, unknown>) => {
+          console.warn("[admin-login] rejected:", reason, extra ?? "");
           return null;
+        };
+        if (!databaseReady()) return fail("DATABASE_URL missing");
+        if (!process.env.AUTH_SECRET) return fail("AUTH_SECRET missing");
+        if (!sameOrigin(authRequest))
+          return fail("origin mismatch", {
+            origin: authRequest.headers.get("origin"),
+            expected: process.env.NEXT_PUBLIC_SITE_URL ?? null,
+          });
+        if (!(await rateLimit(authRequest, "login", 5)))
+          return fail("rate limited");
         const parsed = z
           .object({ email: emailSchema, password: z.string().min(12).max(128) })
           .safeParse(credentials);
-        if (!parsed.success) return null;
+        if (!parsed.success)
+          return fail("invalid input", {
+            issues: parsed.error.issues.map((i) => i.path.join(".") + ": " + i.message),
+          });
         const user = await db.adminUser.findUnique({
           where: { email: parsed.data.email },
         });
@@ -41,7 +50,9 @@ export const authOptions: NextAuthOptions = {
           user?.passwordHash ||
             "00000000000000000000000000000000:" + "00".repeat(64),
         );
-        if (!user || !user.enabled || !valid) return null;
+        if (!user) return fail("no admin user with this email");
+        if (!user.enabled) return fail("admin user disabled");
+        if (!valid) return fail("wrong password");
         const raw = token();
         await db.adminSession.create({
           data: {
